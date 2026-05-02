@@ -24,3 +24,7 @@ yarn-error.log
 *.sl3
 .DS_Store
 Thumbs.db
+cloudflared.exe
+/public/hello.txt
+/public/force_check.php
+/bootstrap/cache/*.php

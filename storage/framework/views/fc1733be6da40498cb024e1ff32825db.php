@@ -1,11 +1,11 @@
-﻿@extends('layouts.app')
+﻿
 
-@section('title', 'Computronix SARL — IT Solutions & Repairs')
-@section('meta_description', 'Computronix SARL delivers professional computer sales, expert repairs, and tailored IT solutions in Lebanon. Powered by AI.')
+<?php $__env->startSection('title', 'Computronix SARL — IT Solutions & Repairs'); ?>
+<?php $__env->startSection('meta_description', 'Computronix SARL delivers professional computer sales, expert repairs, and tailored IT solutions in Lebanon. Powered by AI.'); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
-{{-- HERO SECTION --}}
+
 <section id="alphasoft-hero" class="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden bg-hero">
     <div class="absolute inset-0 grid-bg opacity-50"></div>
     <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full" style="background: var(--gradient-glow); filter: blur(100px); opacity: 0.5;"></div>
@@ -55,7 +55,7 @@
     </div>
 </section>
 
-{{-- SERVICES SECTION --}}
+
 <section id="services-section" class="section">
     <div class="container">
         <div class="section-header">
@@ -98,7 +98,7 @@
     </div>
 </section>
 
-{{-- SYSTEM BUNDLES SECTION (EXACT DETAILS) --}}
+
 <section id="products-section" class="section bg-darker">
     <div class="container">
         <div class="section-header">
@@ -107,7 +107,7 @@
         </div>
 
         <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; justify-content: center; max-width: 900px; margin: 0 auto;">
-            {{-- BUNDLE 1 --}}
+            
             <div class="service-card shadow-elegant" style="text-align: center; border: 1px solid var(--glass-border); position: relative; padding: 3rem 2rem;">
                 <div class="text-gradient" style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; text-transform: uppercase;">Alpha POS System</div>
                 <div style="font-size: 3.5rem; font-weight: 900; margin-bottom: 2rem; color: var(--white); display: flex; align-items: center; justify-content: center; gap: 0.25rem;">555<span style="font-size: 1.5rem; color: var(--primary-cyan);">$</span></div>
@@ -125,7 +125,7 @@
                 </a>
             </div>
 
-            {{-- BUNDLE 2 --}}
+            
             <div class="service-card shadow-elegant" style="text-align: center; border: 2px solid var(--primary-cyan); background: rgba(0, 209, 255, 0.08); position: relative; padding: 3rem 2rem;">
                 <div class="hero-tag" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); margin-bottom: 0; background: var(--primary-cyan); color: var(--bg-color); font-weight: 800;">SPECIAL OFFER</div>
                 <div class="text-gradient" style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 1rem; text-transform: uppercase;">Software and Hardware</div>
@@ -146,7 +146,7 @@
     </div>
 </section>
 
-{{-- TECH PRODUCTS SECTION --}}
+
 <section id="tech-products" class="section">
     <div class="container">
         <div class="section-header">
@@ -211,7 +211,7 @@
     </div>
 </section>
 
-{{-- SHOWCASE GALLERY SECTION --}}
+
 <section id="gallery-section" class="section">
     <div class="container">
         <div class="section-header">
@@ -273,7 +273,7 @@
     </div>
 </section>
 
-{{-- CHAT SECTION --}}
+
 <section id="chat-section" class="section bg-darker">
     <div class="container" style="max-width: 800px;">
         <div class="text-center mb-10">
@@ -322,7 +322,7 @@
     </div>
 </section>
 
-{{-- CONTACT SECTION --}}
+
 <section id="contact-section" class="section">
     <div id="about"></div>
     <div class="container" style="max-width: 900px;">
@@ -357,7 +357,7 @@
     </div>
 </section>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const embeddedForm = document.getElementById('embedded-chat-form');
@@ -387,11 +387,11 @@
         input.value = '';
 
         try {
-            const response = await fetch('{{ route("chat") }}', {
+            const response = await fetch('<?php echo e(route("chat")); ?>', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
                 },
                 body: JSON.stringify({ message: msg, history: history })
             });
@@ -446,6 +446,8 @@
         container.scrollTop = container.scrollHeight;
     }
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\xampp\htdocs\alpha-soft\resources\views/pages/home.blade.php ENDPATH**/ ?>

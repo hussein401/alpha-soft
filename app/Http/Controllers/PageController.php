@@ -28,7 +28,16 @@ class PageController extends Controller
             ['icon' => 'fa-gears',          'title' => 'Master Settings',      'desc' => 'Fully customizable system parameters to fit any business workflow.'],
         ];
 
-        return view('pages.home', compact('stats', 'features'));
+        $services = [
+            ['icon' => 'fa-desktop',         'title' => 'Alpha Soft POS Setup',     'desc' => 'Full installation and configuration of Alpha Soft on your hardware with staff training included.'],
+            ['icon' => 'fa-laptop',          'title' => 'Laptop Sales',             'desc' => 'Latest laptops from top brands at competitive prices, with full warranty and after-sales support.'],
+            ['icon' => 'fa-map-location-dot', 'title' => 'Branch Connectivity',    'desc' => 'Securely connect multiple business branches with VPN and real-time data synchronization for Alpha Soft.'],
+            ['icon' => 'fa-screwdriver-wrench', 'title' => 'Technical Repair',      'desc' => 'Hardware diagnostics, motherboard repair, screen replacement, and OS reinstallation.'],
+            ['icon' => 'fa-network-wired',   'title' => 'Network & Infrastructure', 'desc' => 'LAN/WAN setup, Wi-Fi installation, CCTV systems, and server configuration.'],
+            ['icon' => 'fa-headset',         'title' => '24/7 Support',            'desc' => 'Remote and on-site technical support for all Computronix products and services.'],
+        ];
+
+        return view('pages.home', compact('stats', 'features', 'services'));
     }
 
     /**
@@ -91,6 +100,18 @@ class PageController extends Controller
                 ],
             ],
             [
+                'icon'  => 'fa-map-location-dot',
+                'title' => 'Multi-Branch & GPS',
+                'color' => 'blue',
+                'items' => [
+                    'Real-time branch syncing',
+                    'GPS delivery tracking',
+                    'Multi-location stock view',
+                    'Centralized store locator',
+                    'Inter-branch transactions',
+                ],
+            ],
+            [
                 'icon'  => 'fa-users-gear',
                 'title' => 'HR & Users',
                 'color' => 'orange',
@@ -139,7 +160,7 @@ class PageController extends Controller
         $services = [
             ['icon' => 'fa-desktop',         'title' => 'Alpha Soft POS Setup',     'desc' => 'Full installation and configuration of Alpha Soft on your hardware with staff training included.'],
             ['icon' => 'fa-laptop',          'title' => 'Laptop Sales',             'desc' => 'Latest laptops from top brands at competitive prices, with full warranty and after-sales support.'],
-            ['icon' => 'fa-plug',            'title' => 'Computer Accessories',     'desc' => 'Keyboards, mice, printers, scanners, UPS, networking gear and more — all in stock.'],
+            ['icon' => 'fa-map-location-dot', 'title' => 'Branch Connectivity',    'desc' => 'Securely connect multiple business branches with VPN and real-time data synchronization for Alpha Soft.'],
             ['icon' => 'fa-screwdriver-wrench', 'title' => 'Technical Repair',      'desc' => 'Hardware diagnostics, motherboard repair, screen replacement, and OS reinstallation.'],
             ['icon' => 'fa-network-wired',   'title' => 'Network & Infrastructure', 'desc' => 'LAN/WAN setup, Wi-Fi installation, CCTV systems, and server configuration.'],
             ['icon' => 'fa-headset',         'title' => '24/7 Support',            'desc' => 'Remote and on-site technical support for all Computronix products and services.'],
@@ -172,5 +193,13 @@ class PageController extends Controller
         // In production: Mail::to('ctx2002@hotmail.com')->send(new ContactMail($request->all()));
 
         return back()->with('success', 'Thank you! Your message has been sent. We will contact you shortly.');
+    }
+
+    /**
+     * Repair tracking page — New Mechanism
+     */
+    public function repairs()
+    {
+        return view('pages.repairs');
     }
 }
