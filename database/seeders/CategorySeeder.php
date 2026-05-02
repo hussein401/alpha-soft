@@ -12,11 +12,14 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['name' => 'Business & Office', 'slug' => 'business'],
-            ['name' => 'Gaming', 'slug' => 'gaming'],
-            ['name' => 'Student & Home', 'slug' => 'student'],
-            ['name' => 'Premium & Ultra-thin', 'slug' => 'premium'],
-            ['name' => 'Budget', 'slug' => 'budget'],
+            ['name' => 'Lenovo', 'slug' => 'lenovo'],
+            ['name' => 'HP', 'slug' => 'hp'],
+            ['name' => 'Dell', 'slug' => 'dell'],
+            ['name' => 'Toshiba', 'slug' => 'toshiba'],
+            ['name' => 'Asus', 'slug' => 'asus'],
+            ['name' => 'Sony', 'slug' => 'sony'],
+            ['name' => 'Microsoft Surface', 'slug' => 'surface'],
+            ['name' => 'iLife', 'slug' => 'ilife'],
         ];
 
         foreach ($categories as $cat) {
