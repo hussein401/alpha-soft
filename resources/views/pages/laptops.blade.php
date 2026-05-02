@@ -28,42 +28,30 @@
     <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
 
     <div class="container relative">
-        {{-- CHECKBOX STYLE BRAND BOX --}}
-        <div class="mb-20">
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-slate-900/60 backdrop-blur-2xl border border-slate-800 rounded-[2rem] p-8 shadow-[0_30px_60px_rgba(0,0,0,0.4)]">
-                    <h2 class="text-white text-lg font-bold mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-list-check text-primary"></i>
-                        Filter by Brand
-                    </h2>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
-                        {{-- All Laptops Checkbox --}}
-                        <a href="{{ route('laptops') }}" class="group flex items-center gap-4 py-2 px-4 rounded-xl transition-all duration-300 {{ !request()->has('category') ? 'bg-primary/10 border-primary/20' : 'hover:bg-slate-800/50' }}">
-                            <div class="w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all duration-300 {{ !request()->has('category') ? 'bg-primary border-primary shadow-[0_0_10px_rgba(6,182,212,0.5)]' : 'bg-slate-800 border-slate-700 group-hover:border-primary/50' }}">
-                                @if(!request()->has('category'))
-                                    <i class="fa-solid fa-check text-[10px] text-white"></i>
-                                @endif
-                            </div>
-                            <span class="font-bold text-sm {{ !request()->has('category') ? 'text-white' : 'text-gray-400 group-hover:text-gray-200' }}">
-                                Show All Brands
-                            </span>
-                        </a>
-
-                        @foreach($categories as $cat)
-                            <a href="{{ route('laptops', ['category' => $cat->slug]) }}" class="group flex items-center gap-4 py-2 px-4 rounded-xl transition-all duration-300 {{ request('category') == $cat->slug ? 'bg-primary/10 border-primary/20' : 'hover:bg-slate-800/50' }}">
-                                <div class="w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all duration-300 {{ request('category') == $cat->slug ? 'bg-primary border-primary shadow-[0_0_10px_rgba(6,182,212,0.5)]' : 'bg-slate-800 border-slate-700 group-hover:border-primary/50' }}">
-                                    @if(request('category') == $cat->slug)
-                                        <i class="fa-solid fa-check text-[10px] text-white"></i>
-                                    @endif
-                                </div>
-                                <span class="font-bold text-sm {{ request('category') == $cat->slug ? 'text-white' : 'text-gray-400 group-hover:text-gray-200' }}">
-                                    {{ $cat->name }}
-                                </span>
-                            </a>
-                        @endforeach
+        {{-- CIRCULAR BRAND CATEGORIES (LAPTOPSKING STYLE) --}}
+        <div class="mb-16">
+            <div class="flex flex-wrap justify-center gap-6 md:gap-10">
+                {{-- All Brands Circle --}}
+                <a href="{{ route('laptops') }}" class="group flex flex-col items-center gap-3 transition-all">
+                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center transition-all duration-300 {{ !request()->has('category') ? 'bg-primary shadow-[0_0_20px_rgba(6,182,212,0.4)] scale-110' : 'bg-slate-800/50 hover:bg-slate-700/50 hover:scale-105' }}">
+                        <i class="fa-solid fa-border-all text-2xl md:text-3xl {{ !request()->has('category') ? 'text-white' : 'text-primary' }}"></i>
                     </div>
-                </div>
+                    <span class="text-sm font-bold {{ !request()->has('category') ? 'text-white' : 'text-gray-400 group-hover:text-white' }}">All Brands</span>
+                </a>
+
+                @foreach($categories as $cat)
+                    @php
+                        // Get the first laptop image for this category to use as the thumbnail
+                        $repLaptop = $cat->laptops->first();
+                        $thumbImage = $repLaptop ? asset($repLaptop->image) : asset('img/laptops/default.png');
+                    @endphp
+                    <a href="{{ route('laptops', ['category' => $cat->slug]) }}" class="group flex flex-col items-center gap-3 transition-all">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden bg-[#fdf2e9] flex items-center justify-center p-3 transition-all duration-300 {{ request('category') == $cat->slug ? 'ring-4 ring-primary ring-offset-4 ring-offset-darker scale-110' : 'hover:scale-105' }}">
+                            <img src="{{ $thumbImage }}" alt="{{ $cat->name }}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <span class="text-sm font-bold {{ request('category') == $cat->slug ? 'text-white' : 'text-gray-400 group-hover:text-white' }}">{{ $cat->name }}</span>
+                    </a>
+                @endforeach
             </div>
         </div>
 
