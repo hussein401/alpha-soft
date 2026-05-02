@@ -33,9 +33,8 @@
                     </a>
 
                     {{-- Laptop Image --}}
-                    <div style="height: 220px; overflow: hidden; width: 100%; position: relative; background: #111;">
-                        <img src="{{ $laptop['image'] }}" alt="{{ $laptop['brand'] }} {{ $laptop['model'] }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="group-hover:scale-110 opacity-90 group-hover:opacity-100">
-                        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(15,23,42,1), transparent);"></div>
+                    <div style="height: 220px; overflow: hidden; width: 100%; position: relative; background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                        <img src="{{ $laptop['image'] }}" alt="{{ $laptop['brand'] }} {{ $laptop['model'] }}" style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s ease; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));" class="group-hover:scale-110">
                     </div>
 
                     <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; position: relative; z-index: 2;">
