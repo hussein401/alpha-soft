@@ -27,4 +27,4 @@ Thumbs.db
 cloudflared.exe
 /public/hello.txt
 /public/force_check.php
-/bootstrap/cache/*.php
+# bootstrap/cache php files - allow .gitkeep
