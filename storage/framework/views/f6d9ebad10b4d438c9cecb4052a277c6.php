@@ -26,43 +26,46 @@
     <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
 
     <div class="container relative">
-    <div class="bg-white py-16 mb-20 shadow-inner">
+    
+    <div style="background-color: #ffffff; padding: 4rem 0; margin-bottom: 5rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;">
         <div class="container">
             
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Shop By <span class="text-primary">Brand</span></h2>
-                <p class="text-slate-500 text-sm md:text-base font-medium">The best offers on your favorite brands, right here.</p>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">Shop By <span style="color: var(--primary-cyan);">Brand</span></h2>
+                <p style="color: #64748b; font-size: 0.9rem; font-weight: 500;">The best offers on your favorite brands, right here.</p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
                 
-                <a href="<?php echo e(route('laptops')); ?>" class="group flex flex-col items-center gap-4 transition-all">
-                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center transition-all duration-500 shadow-xl <?php echo e(!request()->has('category') ? 'bg-primary ring-4 ring-primary ring-offset-4 ring-offset-white scale-110' : 'bg-slate-100 border border-slate-200 hover:border-primary/50 hover:scale-105'); ?>">
-                        <i class="fa-solid fa-border-all text-3xl md:text-4xl <?php echo e(!request()->has('category') ? 'text-white' : 'text-primary'); ?>"></i>
+                <a href="<?php echo e(route('laptops')); ?>" style="display: flex; flex-direction: column; items-center; gap: 1rem; text-decoration: none; transition: transform 0.3s ease;" class="hover:scale-105">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-color: <?php echo e(!request()->has('category') ? 'var(--primary-cyan)' : '#f1f5f9'); ?>; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); <?php echo e(!request()->has('category') ? 'box-shadow: 0 0 20px rgba(6,182,212,0.4);' : ''); ?>">
+                        <i class="fa-solid fa-border-all" style="font-size: 1.5rem; color: <?php echo e(!request()->has('category') ? '#ffffff' : 'var(--primary-cyan)'); ?>;"></i>
                     </div>
-                    <span class="text-xs md:text-sm font-black uppercase tracking-widest <?php echo e(!request()->has('category') ? 'text-primary' : 'text-slate-400 group-hover:text-primary'); ?>">All Brands</span>
+                    <span style="font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: <?php echo e(!request()->has('category') ? 'var(--primary-cyan)' : '#94a3b8'); ?>; text-align: center;">All Brands</span>
                 </a>
 
                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php
                         $repLaptop = $cat->laptops->first();
                         $thumbImage = $repLaptop ? asset($repLaptop->image) : asset('img/laptops/default.png');
+                        $isActive = request('category') == $cat->slug;
                     ?>
-                    <a href="<?php echo e(route('laptops', ['category' => $cat->slug])); ?>" class="group flex flex-col items-center gap-4 transition-all">
-                        <div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden bg-[#FEF0E0] flex items-center justify-center p-4 transition-all duration-500 shadow-xl <?php echo e(request('category') == $cat->slug ? 'ring-4 ring-primary ring-offset-4 ring-offset-white scale-110' : 'hover:scale-105'); ?>">
-                            <img src="<?php echo e($thumbImage); ?>" alt="<?php echo e($cat->name); ?>" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
+                    <a href="<?php echo e(route('laptops', ['category' => $cat->slug])); ?>" style="display: flex; flex-direction: column; items-center; gap: 1rem; text-decoration: none; transition: transform 0.3s ease;" class="hover:scale-105">
+                        <div style="width: 100px; height: 100px; border-radius: 50%; background-color: #FEF0E0; display: flex; align-items: center; justify-content: center; padding: 15px; overflow: hidden; border: <?php echo e($isActive ? '3px solid var(--primary-cyan)' : '1px solid #fef0e0'); ?>; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); <?php echo e($isActive ? 'transform: scale(1.1);' : ''); ?>">
+                            <img src="<?php echo e($thumbImage); ?>" alt="<?php echo e($cat->name); ?>" style="width: 100%; height: 100%; object-fit: contain;">
                         </div>
-                        <span class="text-xs md:text-sm font-black uppercase tracking-widest <?php echo e(request('category') == $cat->slug ? 'text-primary' : 'text-slate-400 group-hover:text-primary'); ?>"><?php echo e($cat->name); ?></span>
+                        <span style="font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: <?php echo e($isActive ? 'var(--primary-cyan)' : '#94a3b8'); ?>; text-align: center;"><?php echo e($cat->name); ?></span>
                     </a>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </div>
 
+    <div class="container relative">
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             <?php $__currentLoopData = $laptops; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $laptop): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="group relative bg-slate-900/40 border border-slate-800 rounded-[2rem] overflow-hidden hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+                <div class="group relative bg-slate-900/40 border border-slate-800 rounded-[2rem] overflow-hidden hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] mx-auto w-full max-w-[350px]">
                     
                     <div class="absolute inset-0 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     
