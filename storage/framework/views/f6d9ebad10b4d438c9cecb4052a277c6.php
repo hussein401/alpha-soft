@@ -23,16 +23,37 @@
 <section class="section bg-darker">
     <div class="container">
         
-        <div class="flex flex-wrap justify-center gap-3 mb-10">
-            <a href="<?php echo e(route('laptops')); ?>" class="px-5 py-2 rounded-full text-sm font-semibold transition-colors <?php echo e(!request()->has('category') ? 'bg-primary text-white shadow-[0_0_15px_rgba(6,182,212,0.5)]' : 'bg-slate-800 text-gray-300 hover:bg-slate-700'); ?>">
-                All Laptops
-            </a>
-            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <a href="<?php echo e(route('laptops', ['category' => $cat->slug])); ?>" class="px-5 py-2 rounded-full text-sm font-semibold transition-colors <?php echo e(request('category') == $cat->slug ? 'bg-primary text-white shadow-[0_0_15px_rgba(6,182,212,0.5)]' : 'bg-slate-800 text-gray-300 hover:bg-slate-700'); ?>">
-                    <?php echo e($cat->name); ?>
-
+        <div class="mb-12">
+            <h2 class="text-center text-gray-400 text-sm font-bold uppercase tracking-widest mb-6">Filter by Brand</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="<?php echo e(route('laptops')); ?>" 
+                   class="group flex items-center gap-3 px-6 py-3 rounded-2xl border transition-all duration-300 <?php echo e(!request()->has('category') ? 'bg-primary border-primary text-white shadow-[0_0_20px_rgba(6,182,212,0.4)]' : 'bg-slate-900/50 border-slate-800 text-gray-400 hover:border-primary/50 hover:text-white'); ?>">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center <?php echo e(!request()->has('category') ? 'bg-white/20' : 'bg-slate-800 group-hover:bg-primary/20'); ?>">
+                        <i class="fa-solid fa-border-all text-sm"></i>
+                    </div>
+                    <span class="font-bold tracking-wide">All Brands</span>
                 </a>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <a href="<?php echo e(route('laptops', ['category' => $cat->slug])); ?>" 
+                       class="group flex items-center gap-3 px-6 py-3 rounded-2xl border transition-all duration-300 <?php echo e(request('category') == $cat->slug ? 'bg-primary border-primary text-white shadow-[0_0_20px_rgba(6,182,212,0.4)]' : 'bg-slate-900/50 border-slate-800 text-gray-400 hover:border-primary/50 hover:text-white'); ?>">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center <?php echo e(request('category') == $cat->slug ? 'bg-white/20' : 'bg-slate-800 group-hover:bg-primary/20'); ?>">
+                            <?php
+                                $icon = 'fa-laptop';
+                                if($cat->slug == 'hp') $icon = 'fa-h';
+                                if($cat->slug == 'dell') $icon = 'fa-d';
+                                if($cat->slug == 'lenovo') $icon = 'fa-l';
+                                if($cat->slug == 'asus') $icon = 'fa-a';
+                                if($cat->slug == 'sony') $icon = 'fa-s';
+                                if($cat->slug == 'toshiba') $icon = 'fa-t';
+                                if($cat->slug == 'surface') $icon = 'fa-window-maximize';
+                            ?>
+                            <i class="fa-solid <?php echo e($icon); ?> text-sm uppercase"></i>
+                        </div>
+                        <span class="font-bold tracking-wide"><?php echo e($cat->name); ?></span>
+                    </a>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
