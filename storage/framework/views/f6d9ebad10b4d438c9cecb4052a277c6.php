@@ -26,37 +26,38 @@
     <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
 
     <div class="container relative">
-        
-        <div class="mb-20">
+    <div class="bg-white py-16 mb-20 shadow-inner">
+        <div class="container">
+            
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Shop By <span class="text-gradient">Brand</span></h2>
-                <p class="text-gray-400 text-sm md:text-base">The best offers on your favorite brands, right here.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Shop By <span class="text-primary">Brand</span></h2>
+                <p class="text-slate-500 text-sm md:text-base font-medium">The best offers on your favorite brands, right here.</p>
             </div>
 
             <div class="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16">
                 
                 <a href="<?php echo e(route('laptops')); ?>" class="group flex flex-col items-center gap-4 transition-all">
-                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg <?php echo e(!request()->has('category') ? 'bg-primary ring-4 ring-primary ring-offset-4 ring-offset-darker scale-110' : 'bg-slate-800/40 border border-slate-700 hover:border-primary/50 hover:scale-105'); ?>">
+                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center transition-all duration-500 shadow-xl <?php echo e(!request()->has('category') ? 'bg-primary ring-4 ring-primary ring-offset-4 ring-offset-white scale-110' : 'bg-slate-100 border border-slate-200 hover:border-primary/50 hover:scale-105'); ?>">
                         <i class="fa-solid fa-border-all text-3xl md:text-4xl <?php echo e(!request()->has('category') ? 'text-white' : 'text-primary'); ?>"></i>
                     </div>
-                    <span class="text-xs md:text-sm font-black uppercase tracking-widest <?php echo e(!request()->has('category') ? 'text-white' : 'text-gray-400 group-hover:text-white'); ?>">All Brands</span>
+                    <span class="text-xs md:text-sm font-black uppercase tracking-widest <?php echo e(!request()->has('category') ? 'text-primary' : 'text-slate-400 group-hover:text-primary'); ?>">All Brands</span>
                 </a>
 
                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php
-                        // Get the first laptop image for this category to use as the thumbnail
                         $repLaptop = $cat->laptops->first();
                         $thumbImage = $repLaptop ? asset($repLaptop->image) : asset('img/laptops/default.png');
                     ?>
                     <a href="<?php echo e(route('laptops', ['category' => $cat->slug])); ?>" class="group flex flex-col items-center gap-4 transition-all">
-                        <div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden bg-[#FEF0E0] flex items-center justify-center p-4 transition-all duration-500 shadow-lg <?php echo e(request('category') == $cat->slug ? 'ring-4 ring-primary ring-offset-4 ring-offset-darker scale-110' : 'hover:scale-105'); ?>">
+                        <div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden bg-[#FEF0E0] flex items-center justify-center p-4 transition-all duration-500 shadow-xl <?php echo e(request('category') == $cat->slug ? 'ring-4 ring-primary ring-offset-4 ring-offset-white scale-110' : 'hover:scale-105'); ?>">
                             <img src="<?php echo e($thumbImage); ?>" alt="<?php echo e($cat->name); ?>" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
                         </div>
-                        <span class="text-xs md:text-sm font-black uppercase tracking-widest <?php echo e(request('category') == $cat->slug ? 'text-white' : 'text-gray-400 group-hover:text-white'); ?>"><?php echo e($cat->name); ?></span>
+                        <span class="text-xs md:text-sm font-black uppercase tracking-widest <?php echo e(request('category') == $cat->slug ? 'text-primary' : 'text-slate-400 group-hover:text-primary'); ?>"><?php echo e($cat->name); ?></span>
                     </a>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
+    </div>
 
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
