@@ -22,116 +22,125 @@
 </section>
 
 {{-- LAPTOPS INVENTORY --}}
-<section class="section bg-darker min-h-screen">
-    <div class="container">
-        <div class="flex flex-col lg:flex-row gap-10">
-            
-            {{-- SIDEBAR FILTERS --}}
-            <aside class="lg:w-1/4">
-                <div class="sticky top-32">
-                    <div class="mb-8">
-                        <h2 class="text-xl font-bold mb-2 flex items-center gap-2">
-                            <i class="fa-solid fa-filter text-primary"></i>
-                            Filter by Brand
-                        </h2>
-                        <div class="w-12 h-1 bg-primary rounded-full"></div>
-                    </div>
+<section class="section bg-darker min-h-screen relative overflow-hidden">
+    {{-- Ambient Background Glows --}}
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
 
-                    <div class="flex flex-col gap-3">
-                        {{-- All Brands Tile --}}
-                        <a href="{{ route('laptops') }}" 
-                           class="flex items-center justify-between p-4 rounded-xl border transition-all duration-300 {{ !request()->has('category') ? 'bg-primary border-primary text-white shadow-lg' : 'bg-slate-900/40 border-slate-800 text-gray-400 hover:border-primary/50 hover:bg-slate-800/60' }}">
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-border-all text-lg"></i>
-                                <span class="font-bold">All Laptops</span>
-                            </div>
-                            <span class="text-xs opacity-60">View all</span>
-                        </a>
+    <div class="container relative">
+        {{-- BRAND DISCOVERY SECTION --}}
+        <div class="mb-16">
+            <div class="text-center mb-10">
+                <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Select a Brand</span>
+                <h2 class="text-3xl md:text-4xl font-bold">Explore Our <span class="text-gradient">Catalog</span></h2>
+            </div>
 
-                        @foreach($categories as $cat)
-                            <a href="{{ route('laptops', ['category' => $cat->slug]) }}" 
-                               class="flex items-center justify-between p-4 rounded-xl border transition-all duration-300 {{ request('category') == $cat->slug ? 'bg-primary border-primary text-white shadow-lg' : 'bg-slate-900/40 border-slate-800 text-gray-400 hover:border-primary/50 hover:bg-slate-800/60' }}">
-                                <div class="flex items-center gap-3">
-                                    @php
-                                        $icon = 'fa-laptop';
-                                        if($cat->slug == 'hp') $icon = 'fa-h';
-                                        if($cat->slug == 'dell') $icon = 'fa-d';
-                                        if($cat->slug == 'lenovo') $icon = 'fa-l';
-                                        if($cat->slug == 'asus') $icon = 'fa-a';
-                                        if($cat->slug == 'sony') $icon = 'fa-s';
-                                        if($cat->slug == 'toshiba') $icon = 'fa-t';
-                                        if($cat->slug == 'surface') $icon = 'fa-window-maximize';
-                                    @endphp
-                                    <i class="fa-solid {{ $icon }} text-lg"></i>
-                                    <span class="font-bold">{{ $cat->name }}</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
-                            </a>
-                        @endforeach
-                    </div>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+                {{-- All Laptops Tile --}}
+                <a href="{{ route('laptops') }}" 
+                   class="relative group overflow-hidden flex flex-col items-center justify-center w-28 h-28 md:w-36 md:h-36 rounded-3xl border-2 transition-all duration-500 {{ !request()->has('category') ? 'bg-primary border-primary shadow-[0_0_30px_rgba(6,182,212,0.3)] scale-105' : 'bg-slate-900/40 border-slate-800 hover:border-primary/50 hover:bg-slate-800/80' }}">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="fa-solid fa-border-all text-2xl md:text-3xl mb-3 {{ !request()->has('category') ? 'text-white' : 'text-primary' }}"></i>
+                    <span class="font-bold text-xs md:text-sm {{ !request()->has('category') ? 'text-white' : 'text-gray-400' }}">All</span>
+                </a>
 
-                    {{-- Help Card --}}
-                    <div class="mt-10 p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-800 relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
-                            <i class="fa-brands fa-whatsapp text-6xl"></i>
+                @foreach($categories as $cat)
+                    <a href="{{ route('laptops', ['category' => $cat->slug]) }}" 
+                       class="relative group overflow-hidden flex flex-col items-center justify-center w-28 h-28 md:w-36 md:h-36 rounded-3xl border-2 transition-all duration-500 {{ request('category') == $cat->slug ? 'bg-primary border-primary shadow-[0_0_30px_rgba(6,182,212,0.3)] scale-105' : 'bg-slate-900/40 border-slate-800 hover:border-primary/50 hover:bg-slate-800/80' }}">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        {{-- Background Brand Initial --}}
+                        <div class="absolute -bottom-2 -right-2 text-6xl font-black opacity-5 group-hover:opacity-10 transition-opacity uppercase pointer-events-none">
+                            {{ substr($cat->name, 0, 1) }}
                         </div>
-                        <h4 class="font-bold mb-2">Need help?</h4>
-                        <p class="text-sm text-gray-400 mb-4">Can't find a specific model? Chat with our experts.</p>
-                        <a href="https://wa.me/9613243504" target="_blank" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                            WhatsApp Us <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </aside>
 
-            {{-- MAIN CONTENT --}}
-            <main class="lg:w-3/4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-                    @foreach($laptops as $laptop)
-                        <div class="service-card group shadow-elegant" style="padding: 0; position: relative; overflow: hidden; border: 1px solid var(--glass-border); transition: var(--transition); display: flex; flex-direction: column; height: 100%; border-radius: 16px; background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(10px);">
-                            {{-- Floating WhatsApp button --}}
-                            <a href="https://wa.me/9613243504?text=Hello%2C%20I%20am%20interested%20in%20the%20{{ urlencode($laptop->brand . ' ' . $laptop->model) }}%20laptop." target="_blank" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: #25D366; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition); text-decoration: none;" class="hover:scale-110 hover:bg-green-500">
-                                <i class="fa-brands fa-whatsapp" style="font-size: 1rem;"></i>
-                            </a>
-
-                            {{-- Laptop Image --}}
-                            <div style="aspect-ratio: 16/10; overflow: hidden; width: 100%; position: relative; background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                                <img src="{{ asset($laptop->image) }}" alt="{{ $laptop->brand }} {{ $laptop->model }}" style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s ease; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.05));" class="group-hover:scale-105">
-                            </div>
-
-                            <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; position: relative; z-index: 2; background: rgba(15, 23, 42, 0.2);">
-                                <div style="margin-bottom: 0.75rem;">
-                                    <span style="font-size: 0.7rem; font-weight: 800; color: var(--primary-cyan); text-transform: uppercase; letter-spacing: 1.5px; background: rgba(6, 182, 212, 0.1); padding: 4px 10px; border-radius: 20px;">
-                                        {{ $laptop->brand }}
-                                    </span>
-                                </div>
-                                
-                                <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-white); margin-bottom: 1.2rem; line-height: 1.4;" class="group-hover:text-primary transition-colors">
-                                    {{ $laptop->model }}
-                                </h3>
-
-                                <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted); font-size: 0.85rem; line-height: 2; flex-grow: 1;">
-                                    <li style="display: flex; align-items: center;"><i class="fa-solid fa-microchip" style="width: 25px; font-size: 1rem; opacity: 0.7; color: var(--primary-cyan);"></i> <strong style="color: #ccc; margin-right: 5px;">RAM:</strong> {{ $laptop->ram }}</li>
-                                    <li style="display: flex; align-items: center;"><i class="fa-solid fa-hard-drive" style="width: 25px; font-size: 1rem; opacity: 0.7; color: var(--primary-cyan);"></i> <strong style="color: #ccc; margin-right: 5px;">Storage:</strong> {{ $laptop->storage }}</li>
-                                    @if($laptop->details)
-                                        <li style="display: flex; align-items: flex-start; margin-top: 5px;"><i class="fa-solid fa-gamepad" style="width: 25px; font-size: 1rem; margin-top: 6px; opacity: 0.7; color: var(--primary-cyan);"></i> <span style="line-height: 1.4;"><strong style="color: #ccc; margin-right: 5px;">Extra:</strong> {{ $laptop->details }}</span></li>
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                @if($laptops->isEmpty())
-                    <div class="text-center py-20 bg-slate-900/20 rounded-3xl border border-dashed border-slate-800">
-                        <i class="fa-solid fa-laptop-slash text-6xl text-gray-700 mb-6"></i>
-                        <h3 class="text-2xl font-bold mb-2">No laptops found</h3>
-                        <p class="text-gray-400">We don't have any models for this brand right now. Please check back soon!</p>
-                        <a href="{{ route('laptops') }}" class="btn-primary mt-6">View all laptops</a>
-                    </div>
-                @endif
-            </main>
+                        @php
+                            $icon = 'fa-laptop';
+                            if($cat->slug == 'hp') $icon = 'fa-h';
+                            if($cat->slug == 'dell') $icon = 'fa-d';
+                            if($cat->slug == 'lenovo') $icon = 'fa-l';
+                            if($cat->slug == 'asus') $icon = 'fa-a';
+                            if($cat->slug == 'sony') $icon = 'fa-s';
+                            if($cat->slug == 'toshiba') $icon = 'fa-t';
+                            if($cat->slug == 'surface') $icon = 'fa-window-maximize';
+                        @endphp
+                        <i class="fa-solid {{ $icon }} text-2xl md:text-3xl mb-3 {{ request('category') == $cat->slug ? 'text-white' : 'text-primary' }}"></i>
+                        <span class="font-bold text-xs md:text-sm text-center px-2 {{ request('category') == $cat->slug ? 'text-white' : 'text-gray-400' }}">{{ $cat->name }}</span>
+                    </a>
+                @endforeach
+            </div>
         </div>
+
+        {{-- LAPTOPS GRID --}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            @foreach($laptops as $laptop)
+                <div class="group relative bg-slate-900/40 border border-slate-800 rounded-[2rem] overflow-hidden hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+                    {{-- Glass Effect Overlay --}}
+                    <div class="absolute inset-0 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    
+                    {{-- Badge --}}
+                    <div class="absolute top-6 left-6 z-10">
+                        <span class="px-4 py-1.5 rounded-full bg-slate-950/80 border border-slate-800 text-[10px] font-bold text-primary uppercase tracking-widest backdrop-blur-md">
+                            {{ $laptop->brand }}
+                        </span>
+                    </div>
+
+                    {{-- Image Container --}}
+                    <div class="relative aspect-[4/3] bg-white overflow-hidden p-8 flex items-center justify-center">
+                        <img src="{{ asset($laptop->image) }}" alt="{{ $laptop->brand }} {{ $laptop->model }}" 
+                             class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
+                    </div>
+
+                    {{-- Content --}}
+                    <div class="p-8 relative">
+                        <h3 class="text-lg font-bold text-white mb-6 line-clamp-1 group-hover:text-primary transition-colors">
+                            {{ $laptop->model }}
+                        </h3>
+
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-microchip text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-500 uppercase font-bold">RAM</p>
+                                    <p class="text-sm font-bold text-gray-200">{{ $laptop->ram }}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-hard-drive text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-500 uppercase font-bold">SSD</p>
+                                    <p class="text-sm font-bold text-gray-200">{{ $laptop->storage }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Action Button --}}
+                        <a href="https://wa.me/9613243504?text=Hello%2C%20I%20am%20interested%20in%20the%20{{ urlencode($laptop->brand . ' ' . $laptop->model) }}%20laptop." 
+                           target="_blank"
+                           class="flex items-center justify-center gap-3 w-full py-4 rounded-2xl bg-slate-800 border border-slate-700 text-white font-bold hover:bg-primary hover:border-primary hover:shadow-[0_10px_20px_rgba(6,182,212,0.3)] transition-all duration-300">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Order via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        @if($laptops->isEmpty())
+            <div class="text-center py-32">
+                <div class="w-24 h-24 bg-slate-900/50 rounded-full flex items-center justify-center mx-auto mb-6 border border-slate-800">
+                    <i class="fa-solid fa-laptop-slash text-4xl text-gray-700"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">No Models Found</h3>
+                <p class="text-gray-400 mb-10 max-w-md mx-auto">We're currently updating our stock for this brand. Please check back soon or browse other brands.</p>
+                <a href="{{ route('laptops') }}" class="btn-primary">View All Laptops</a>
+            </div>
+        @endif
     </div>
 </section>
 

@@ -161,7 +161,7 @@
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
                 </a>
                 <div style="height: 220px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                    <img src="https://images.unsplash.com/photo-1555618570-33318999824c?q=90&w=800&auto=format&fit=crop" alt="HP Victus" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1603302523023-dc5013058a2b?auto=format&fit=crop&q=80&w=800" alt="HP Victus" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
                 </div>
                 <div style="padding: 1.5rem;">
                     <div style="color: var(--primary-cyan); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">Gaming</div>
@@ -176,7 +176,7 @@
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
                 </a>
                 <div style="height: 220px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=90&w=800&auto=format&fit=crop" alt="Lenovo i7" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800" alt="Lenovo i7" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
                 </div>
                 <div style="padding: 1.5rem;">
                     <div style="color: var(--primary-cyan); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">High Performance</div>
@@ -191,7 +191,7 @@
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
                 </a>
                 <div style="height: 220px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                    <img src="https://images.unsplash.com/photo-1593642615-f9b40e341f0a?q=90&w=800&auto=format&fit=crop" alt="Dell Latitude" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1593642615-f9b40e341f0a?auto=format&fit=crop&q=80&w=800" alt="Dell Latitude" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
                 </div>
                 <div style="padding: 1.5rem;">
                     <div style="color: var(--primary-cyan); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">Pro Series</div>
@@ -206,7 +206,7 @@
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
                 </a>
                 <div style="height: 220px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=90&w=800&auto=format&fit=crop" alt="ASUS i7" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="ASUS i7" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
                 </div>
                 <div style="padding: 1.5rem;">
                     <div style="color: var(--primary-cyan); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">Value Gaming</div>
