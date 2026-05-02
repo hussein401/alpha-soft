@@ -27,21 +27,30 @@
 
     <div class="container relative">
         
-        <div class="mb-16">
-            <div class="max-w-5xl mx-auto">
-                <div class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-[2.5rem] p-3 md:p-4 shadow-2xl">
-                    <div class="flex flex-wrap md:flex-nowrap items-center justify-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+        <div class="mb-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-gray-400 text-xs font-black uppercase tracking-[0.3em] mb-2">Shop by Brand</h2>
+                    <div class="w-10 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="bg-slate-900/60 backdrop-blur-2xl border border-slate-800 rounded-[2.5rem] p-6 md:p-8 shadow-[0_30px_60px_rgba(0,0,0,0.4)] relative overflow-hidden">
+                    
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 blur-[50px] rounded-full"></div>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 relative z-10">
                         
                         <a href="<?php echo e(route('laptops')); ?>" 
-                           class="flex-shrink-0 flex items-center gap-3 px-6 py-4 rounded-[1.8rem] transition-all duration-300 <?php echo e(!request()->has('category') ? 'bg-primary text-white shadow-lg' : 'text-gray-400 hover:bg-slate-800/50 hover:text-white'); ?>">
-                            <i class="fa-solid fa-border-all text-sm"></i>
-                            <span class="font-bold whitespace-nowrap">All Brands</span>
+                           class="flex flex-col items-center justify-center p-6 rounded-3xl border transition-all duration-300 <?php echo e(!request()->has('category') ? 'bg-primary border-primary text-white shadow-[0_10px_20px_rgba(6,182,212,0.3)]' : 'bg-slate-800/40 border-slate-800 text-gray-400 hover:border-primary/40 hover:text-white group'); ?>">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 <?php echo e(!request()->has('category') ? 'bg-white/20' : 'bg-slate-700 group-hover:bg-primary/20'); ?>">
+                                <i class="fa-solid fa-border-all text-sm"></i>
+                            </div>
+                            <span class="font-bold text-xs uppercase tracking-widest">All</span>
                         </a>
 
                         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="hidden md:block w-px h-8 bg-slate-800 mx-1"></div>
                             <a href="<?php echo e(route('laptops', ['category' => $cat->slug])); ?>" 
-                               class="flex-shrink-0 flex items-center gap-3 px-6 py-4 rounded-[1.8rem] transition-all duration-300 <?php echo e(request('category') == $cat->slug ? 'bg-primary text-white shadow-lg' : 'text-gray-400 hover:bg-slate-800/50 hover:text-white'); ?>">
+                               class="flex flex-col items-center justify-center p-6 rounded-3xl border transition-all duration-300 <?php echo e(request('category') == $cat->slug ? 'bg-primary border-primary text-white shadow-[0_10px_20px_rgba(6,182,212,0.3)]' : 'bg-slate-800/40 border-slate-800 text-gray-400 hover:border-primary/40 hover:text-white group'); ?>">
                                 <?php
                                     $icon = 'fa-laptop';
                                     if($cat->slug == 'hp') $icon = 'fa-h';
@@ -52,8 +61,10 @@
                                     if($cat->slug == 'toshiba') $icon = 'fa-t';
                                     if($cat->slug == 'surface') $icon = 'fa-window-maximize';
                                 ?>
-                                <i class="fa-solid <?php echo e($icon); ?> text-sm"></i>
-                                <span class="font-bold whitespace-nowrap"><?php echo e($cat->name); ?></span>
+                                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 <?php echo e(request('category') == $cat->slug ? 'bg-white/20' : 'bg-slate-700 group-hover:bg-primary/20'); ?>">
+                                    <i class="fa-solid <?php echo e($icon); ?> text-sm uppercase"></i>
+                                </div>
+                                <span class="font-bold text-xs uppercase tracking-widest"><?php echo e($cat->name); ?></span>
                             </a>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
