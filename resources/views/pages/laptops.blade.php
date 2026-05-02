@@ -29,14 +29,19 @@
 
     <div class="container relative">
         {{-- CIRCULAR BRAND CATEGORIES (LAPTOPSKING STYLE) --}}
-        <div class="mb-16">
-            <div class="flex flex-wrap justify-center gap-6 md:gap-10">
+        <div class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Shop By <span class="text-gradient">Brand</span></h2>
+                <p class="text-gray-400 text-sm md:text-base">The best offers on your favorite brands, right here.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16">
                 {{-- All Brands Circle --}}
-                <a href="{{ route('laptops') }}" class="group flex flex-col items-center gap-3 transition-all">
-                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center transition-all duration-300 {{ !request()->has('category') ? 'bg-primary shadow-[0_0_20px_rgba(6,182,212,0.4)] scale-110' : 'bg-slate-800/50 hover:bg-slate-700/50 hover:scale-105' }}">
-                        <i class="fa-solid fa-border-all text-2xl md:text-3xl {{ !request()->has('category') ? 'text-white' : 'text-primary' }}"></i>
+                <a href="{{ route('laptops') }}" class="group flex flex-col items-center gap-4 transition-all">
+                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg {{ !request()->has('category') ? 'bg-primary ring-4 ring-primary ring-offset-4 ring-offset-darker scale-110' : 'bg-slate-800/40 border border-slate-700 hover:border-primary/50 hover:scale-105' }}">
+                        <i class="fa-solid fa-border-all text-3xl md:text-4xl {{ !request()->has('category') ? 'text-white' : 'text-primary' }}"></i>
                     </div>
-                    <span class="text-sm font-bold {{ !request()->has('category') ? 'text-white' : 'text-gray-400 group-hover:text-white' }}">All Brands</span>
+                    <span class="text-xs md:text-sm font-black uppercase tracking-widest {{ !request()->has('category') ? 'text-white' : 'text-gray-400 group-hover:text-white' }}">All Brands</span>
                 </a>
 
                 @foreach($categories as $cat)
@@ -45,11 +50,11 @@
                         $repLaptop = $cat->laptops->first();
                         $thumbImage = $repLaptop ? asset($repLaptop->image) : asset('img/laptops/default.png');
                     @endphp
-                    <a href="{{ route('laptops', ['category' => $cat->slug]) }}" class="group flex flex-col items-center gap-3 transition-all">
-                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden bg-[#fdf2e9] flex items-center justify-center p-3 transition-all duration-300 {{ request('category') == $cat->slug ? 'ring-4 ring-primary ring-offset-4 ring-offset-darker scale-110' : 'hover:scale-105' }}">
-                            <img src="{{ $thumbImage }}" alt="{{ $cat->name }}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <a href="{{ route('laptops', ['category' => $cat->slug]) }}" class="group flex flex-col items-center gap-4 transition-all">
+                        <div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden bg-[#FEF0E0] flex items-center justify-center p-4 transition-all duration-500 shadow-lg {{ request('category') == $cat->slug ? 'ring-4 ring-primary ring-offset-4 ring-offset-darker scale-110' : 'hover:scale-105' }}">
+                            <img src="{{ $thumbImage }}" alt="{{ $cat->name }}" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
                         </div>
-                        <span class="text-sm font-bold {{ request('category') == $cat->slug ? 'text-white' : 'text-gray-400 group-hover:text-white' }}">{{ $cat->name }}</span>
+                        <span class="text-xs md:text-sm font-black uppercase tracking-widest {{ request('category') == $cat->slug ? 'text-white' : 'text-gray-400 group-hover:text-white' }}">{{ $cat->name }}</span>
                     </a>
                 @endforeach
             </div>
