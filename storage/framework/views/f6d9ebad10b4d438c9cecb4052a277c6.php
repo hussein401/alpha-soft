@@ -22,37 +22,37 @@
 
 <section class="section bg-darker">
     <div class="container">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             <?php $__currentLoopData = $laptops; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $laptop): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="service-card group shadow-elegant" style="padding: 0; position: relative; overflow: hidden; border: 1px solid var(--glass-border); transition: var(--transition); display: flex; flex-direction: column; height: 100%; border-radius: 12px; background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(10px);">
+                <div class="service-card group shadow-elegant" style="padding: 0; position: relative; overflow: hidden; border: 1px solid var(--glass-border); transition: var(--transition); display: flex; flex-direction: column; height: 100%; border-radius: 16px; background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(10px);">
                     
                     <a href="https://wa.me/9613243504?text=Hello%2C%20I%20am%20interested%20in%20the%20<?php echo e(urlencode($laptop['brand'] . ' ' . $laptop['model'])); ?>%20laptop." target="_blank" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: #25D366; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition); text-decoration: none;" class="hover:scale-110 hover:bg-green-500">
                         <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i>
                     </a>
 
                     
-                    <div style="height: 220px; overflow: hidden; width: 100%; position: relative; background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
-                        <img src="<?php echo e($laptop['image']); ?>" alt="<?php echo e($laptop['brand']); ?> <?php echo e($laptop['model']); ?>" style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s ease; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));" class="group-hover:scale-110">
+                    <div style="aspect-ratio: 16/10; overflow: hidden; width: 100%; position: relative; background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
+                        <img src="<?php echo e($laptop['image']); ?>" alt="<?php echo e($laptop['brand']); ?> <?php echo e($laptop['model']); ?>" style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s ease; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.05));" class="group-hover:scale-105">
                     </div>
 
-                    <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; position: relative; z-index: 2;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
-                            <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary-cyan); text-transform: uppercase; letter-spacing: 1.5px; background: rgba(6, 182, 212, 0.1); padding: 4px 10px; border-radius: 20px;">
+                    <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; position: relative; z-index: 2; background: rgba(15, 23, 42, 0.2);">
+                        <div style="margin-bottom: 0.75rem;">
+                            <span style="font-size: 0.7rem; font-weight: 800; color: var(--primary-cyan); text-transform: uppercase; letter-spacing: 1.5px; background: rgba(6, 182, 212, 0.1); padding: 4px 10px; border-radius: 20px;">
                                 <?php echo e($laptop['brand']); ?>
 
-                            </div>
+                            </span>
                         </div>
                         
-                        <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--text-white); margin-bottom: 1.2rem; line-height: 1.4;">
+                        <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-white); margin-bottom: 1.2rem; line-height: 1.4;" class="group-hover:text-primary transition-colors">
                             <?php echo e($laptop['model']); ?>
 
                         </h3>
 
-                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 2; flex-grow: 1;">
-                            <li style="display: flex; align-items: center;"><i class="fa-solid fa-microchip text-primary" style="width: 25px; font-size: 1.1rem;"></i> <strong style="color: #ccc; margin-right: 5px;">RAM:</strong> <?php echo e($laptop['ram']); ?></li>
-                            <li style="display: flex; align-items: center;"><i class="fa-solid fa-hard-drive text-primary" style="width: 25px; font-size: 1.1rem;"></i> <strong style="color: #ccc; margin-right: 5px;">Storage:</strong> <?php echo e($laptop['storage']); ?></li>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 2; flex-grow: 1;">
+                            <li style="display: flex; align-items: center;"><i class="fa-solid fa-microchip" style="width: 25px; font-size: 1rem; opacity: 0.7; color: var(--primary-cyan);"></i> <strong style="color: #ccc; margin-right: 5px;">RAM:</strong> <?php echo e($laptop['ram']); ?></li>
+                            <li style="display: flex; align-items: center;"><i class="fa-solid fa-hard-drive" style="width: 25px; font-size: 1rem; opacity: 0.7; color: var(--primary-cyan);"></i> <strong style="color: #ccc; margin-right: 5px;">Storage:</strong> <?php echo e($laptop['storage']); ?></li>
                             <?php if($laptop['details']): ?>
-                                <li style="display: flex; align-items: flex-start; margin-top: 5px;"><i class="fa-solid fa-gamepad text-primary" style="width: 25px; font-size: 1.1rem; margin-top: 6px;"></i> <span style="line-height: 1.4;"><strong style="color: #ccc; margin-right: 5px;">Extra:</strong> <?php echo e($laptop['details']); ?></span></li>
+                                <li style="display: flex; align-items: flex-start; margin-top: 5px;"><i class="fa-solid fa-gamepad" style="width: 25px; font-size: 1rem; margin-top: 6px; opacity: 0.7; color: var(--primary-cyan);"></i> <span style="line-height: 1.4;"><strong style="color: #ccc; margin-right: 5px;">Extra:</strong> <?php echo e($laptop['details']); ?></span></li>
                             <?php endif; ?>
                         </ul>
                     </div>

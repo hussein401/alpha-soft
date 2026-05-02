@@ -1,11 +1,11 @@
-﻿@extends('layouts.app')
+﻿
 
-@section('title', 'Computronix SARL — IT Solutions & Repairs')
-@section('meta_description', 'Computronix SARL delivers professional computer sales, expert repairs, and tailored IT solutions in Lebanon. Powered by AI.')
+<?php $__env->startSection('title', 'Computronix SARL — IT Solutions & Repairs'); ?>
+<?php $__env->startSection('meta_description', 'Computronix SARL delivers professional computer sales, expert repairs, and tailored IT solutions in Lebanon. Powered by AI.'); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
-{{-- HERO SECTION --}}
+
 <section id="alphasoft-hero" class="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden bg-hero">
     <div class="absolute inset-0 grid-bg opacity-50"></div>
     <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full" style="background: var(--gradient-glow); filter: blur(100px); opacity: 0.5;"></div>
@@ -55,7 +55,7 @@
     </div>
 </section>
 
-{{-- SERVICES SECTION --}}
+
 <section id="services-section" class="section">
     <div class="container">
         <div class="section-header">
@@ -98,7 +98,7 @@
     </div>
 </section>
 
-{{-- SYSTEM BUNDLES SECTION (EXACT DETAILS) --}}
+
 <section id="products-section" class="section bg-darker">
     <div class="container">
         <div class="section-header">
@@ -107,7 +107,7 @@
         </div>
 
         <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; justify-content: center; max-width: 900px; margin: 0 auto;">
-            {{-- BUNDLE 1 --}}
+            
             <div class="service-card shadow-elegant" style="text-align: center; border: 1px solid var(--glass-border); position: relative; padding: 3rem 2rem;">
                 <div class="text-gradient" style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; text-transform: uppercase;">Alpha POS System</div>
                 <div style="font-size: 3.5rem; font-weight: 900; margin-bottom: 2rem; color: var(--white); display: flex; align-items: center; justify-content: center; gap: 0.25rem;">555<span style="font-size: 1.5rem; color: var(--primary-cyan);">$</span></div>
@@ -125,7 +125,7 @@
                 </a>
             </div>
 
-            {{-- BUNDLE 2 --}}
+            
             <div class="service-card shadow-elegant" style="text-align: center; border: 2px solid var(--primary-cyan); background: rgba(0, 209, 255, 0.08); position: relative; padding: 3rem 2rem;">
                 <div class="hero-tag" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); margin-bottom: 0; background: var(--primary-cyan); color: var(--bg-color); font-weight: 800;">SPECIAL OFFER</div>
                 <div class="text-gradient" style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 1rem; text-transform: uppercase;">Software and Hardware</div>
@@ -146,7 +146,7 @@
     </div>
 </section>
 
-{{-- TECH PRODUCTS SECTION --}}
+
 <section id="tech-products" class="section bg-darker">
     <div class="container">
         <div class="section-header">
@@ -155,13 +155,13 @@
         </div>
 
         <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
-            {{-- FEATURED LAPTOP 1 --}}
+            
             <div class="service-card group" style="padding: 0; overflow: hidden; position: relative;">
                 <a href="https://wa.me/9613243504?text=Hello%2C%20I%20am%20inquiring%20about%20the%20HP%20Victus%20i5%2013th%20Gen%20Gaming%20Laptop." target="_blank" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: #25D366; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition); text-decoration: none;" class="hover:scale-110">
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
                 </a>
                 <div style="height: 220px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                    <img src="https://images.unsplash.com/photo-1603302523023-dc5013058a2b?auto=format&fit=crop&q=80&w=800" alt="HP Victus" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1555618570-33318999824c?q=90&w=800&auto=format&fit=crop" alt="HP Victus" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
                 </div>
                 <div style="padding: 1.5rem;">
                     <div style="color: var(--primary-cyan); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">Gaming</div>
@@ -170,13 +170,13 @@
                 </div>
             </div>
 
-            {{-- FEATURED LAPTOP 2 --}}
+            
             <div class="service-card group" style="padding: 0; overflow: hidden; position: relative;">
                 <a href="https://wa.me/9613243504?text=Hello%2C%20I%20am%20inquiring%20about%20the%20Lenovo%20i7%2013th%20Gen%20Laptop." target="_blank" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: #25D366; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition); text-decoration: none;" class="hover:scale-110">
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
                 </a>
                 <div style="height: 220px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800" alt="Lenovo i7" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=90&w=800&auto=format&fit=crop" alt="Lenovo i7" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
                 </div>
                 <div style="padding: 1.5rem;">
                     <div style="color: var(--primary-cyan); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">High Performance</div>
@@ -185,13 +185,13 @@
                 </div>
             </div>
 
-            {{-- FEATURED LAPTOP 3 --}}
+            
             <div class="service-card group" style="padding: 0; overflow: hidden; position: relative;">
                 <a href="https://wa.me/9613243504?text=Hello%2C%20I%20am%20inquiring%20about%20the%20Dell%20Latitude%20i5%2011th%20Gen%20Laptop." target="_blank" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: #25D366; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition); text-decoration: none;" class="hover:scale-110">
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
                 </a>
                 <div style="height: 220px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                    <img src="https://images.unsplash.com/photo-1593642615-f9b40e341f0a?auto=format&fit=crop&q=80&w=800" alt="Dell Latitude" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1593642615-f9b40e341f0a?q=90&w=800&auto=format&fit=crop" alt="Dell Latitude" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
                 </div>
                 <div style="padding: 1.5rem;">
                     <div style="color: var(--primary-cyan); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">Pro Series</div>
@@ -200,13 +200,13 @@
                 </div>
             </div>
 
-            {{-- FEATURED LAPTOP 4 --}}
+            
             <div class="service-card group" style="padding: 0; overflow: hidden; position: relative;">
                 <a href="https://wa.me/9613243504?text=Hello%2C%20I%20am%20inquiring%20about%20the%20ASUS%20i7%207th%20Gen%20Laptop." target="_blank" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: #25D366; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition); text-decoration: none;" class="hover:scale-110">
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
                 </a>
                 <div style="height: 220px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="ASUS i7" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=90&w=800&auto=format&fit=crop" alt="ASUS i7" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition);" class="group-hover:scale-105">
                 </div>
                 <div style="padding: 1.5rem;">
                     <div style="color: var(--primary-cyan); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">Value Gaming</div>
@@ -217,14 +217,14 @@
         </div>
 
         <div style="text-align: center;">
-            <a href="{{ route('laptops') }}" class="btn-primary shadow-elegant" style="padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 12px;">
+            <a href="<?php echo e(route('laptops')); ?>" class="btn-primary shadow-elegant" style="padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 12px;">
                 View All 30+ Laptops <i class="fa-solid fa-laptop" style="margin-left: 0.5rem;"></i>
             </a>
         </div>
     </div>
 </section>
 
-{{-- SHOWCASE GALLERY SECTION --}}
+
 <section id="gallery-section" class="section">
     <div class="container">
         <div class="section-header">
@@ -286,7 +286,7 @@
     </div>
 </section>
 
-{{-- CHAT SECTION --}}
+
 <section id="chat-section" class="section bg-darker">
     <div class="container" style="max-width: 800px;">
         <div class="text-center mb-10">
@@ -335,7 +335,7 @@
     </div>
 </section>
 
-{{-- CONTACT SECTION --}}
+
 <section id="contact-section" class="section">
     <div id="about"></div>
     <div class="container" style="max-width: 900px;">
@@ -370,7 +370,7 @@
     </div>
 </section>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const embeddedForm = document.getElementById('embedded-chat-form');
@@ -400,11 +400,11 @@
         input.value = '';
 
         try {
-            const response = await fetch('{{ route("chat") }}', {
+            const response = await fetch('<?php echo e(route("chat")); ?>', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
                 },
                 body: JSON.stringify({ message: msg, history: history })
             });
@@ -459,6 +459,8 @@
         container.scrollTop = container.scrollHeight;
     }
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\xampp\htdocs\alpha-soft\resources\views/pages/home.blade.php ENDPATH**/ ?>

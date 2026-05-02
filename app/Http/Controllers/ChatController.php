@@ -23,12 +23,21 @@ class ChatController extends Controller
         OUR PRODUCTS:
         1. Alpha POS System (555$): A complete business solution with HP i5 8/256, 22\" Screen, and all peripherals.
         2. Software special offer (500$): Full Alpha Soft license + setup.
-        3. Laptop Sales: We have a massive inventory of over 30 laptop models in stock! We have Lenovo, HP, Dell, Sony, Toshiba, and ASUS. Specs range from basic Celeron/Core2Duo up to i7 13th Gen with RTX 3050 GPUs.
+        3. Massive Laptop Inventory:
+           - Lenovo: i5 13th Gen (8/512GB SSD), i7 13th Gen (16/512GB SSD), i7 8th Gen (8/512GB), i7 (8/256GB SSD), Celeron (8/256GB), ThinkPad T490 i5 8th Gen (8/256GB), ThinkPad T450s i5 6th Gen (8/256GB), ThinkPad T490s i5 8th Gen (8/256GB).
+           - HP: Victus i5 13th Gen (8/512GB SSD, RTX 3050 6GB), i5 (4/512GB HDD), Mini Laptop i5 8th Gen (8/128GB), i5 8th Gen (16/512GB), EliteBook i5 8th Gen (8/256GB).
+           - Dell: i5 7th Gen (8/256GB), i5 8th Gen (8/256GB), Core 2 Duo (4/256GB), Latitude 3420 i5 11th Gen (16/512GB), Latitude 5480 i7 6th Gen (8/256GB), Latitude 5540 i5 4th Gen (4/256GB), Precision 3510 i5 8th Gen (8/256GB, 2GB VGA), Precision 3530 i7 8th Gen (16/256GB, 4GB VGA), Latitude i5 6th Gen (8/256GB), Latitude 5410 i5 10th Gen (16/256GB).
+           - Sony: i5 (4GB/HDD), i5 (6GB/2TB HDD).
+           - Toshiba: Pentium (3/512GB HDD), Pentium (4/500GB HDD), Celeron (4/256GB SSD), i7 5th Gen (8/256GB, 2GB VGA), i5 8th Gen (8/256GB).
+           - ASUS: i7 7th Gen (16/128GB SSD + 1TB HDD, GTX 1050 4GB).
+           - Surface: i7 6th Gen (8/256GB).
+           - Life: Intel Inside (4/128GB HDD).
         4. Services: Motherboard/screen repairs, Networking, CCTV.
         
         GUIDANCE: 
-        - If someone asks for a laptop for studies, business, or gaming, enthusiastically tell them we have over 30 models in stock (from HP Victus Gaming to Dell Latitudes and Lenovo ThinkPads). Tell them to check our 'Laptops' page or message us on WhatsApp for exact pricing!
-        - Only refer to the 555$ bundle as the 'Alpha POS System'.";
+        - When someone asks for a laptop, give them specific models from the list above based on their needs (gaming, study, budget). 
+        - Always mention the 'Laptops' page for more photos and details.
+        - Encourage them to message us on WhatsApp (03 243 504) for the best price.";
 
         $contents = [];
 
