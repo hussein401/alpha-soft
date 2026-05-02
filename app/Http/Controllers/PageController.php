@@ -206,57 +206,18 @@ class PageController extends Controller
     /**
      * Laptops inventory page
      */
-    public function laptops()
+    public function laptops(\Illuminate\Http\Request $request)
     {
-        // Use highly realistic, brand-specific local images generated specifically for these models
-        $imgLenovoIdeaPad = asset('img/laptops/laptop_lenovo_ideapad_1777718294494.png');
-        $imgLenovoThinkPad = asset('img/laptops/laptop_lenovo_thinkpad_1777718313594.png');
-        $imgHPVictus = asset('img/laptops/laptop_hp_victus_1777718328341.png');
-        $imgHPEliteBook = asset('img/laptops/laptop_hp_elitebook_1777718404770.png');
-        $imgDellLatitude = asset('img/laptops/laptop_dell_latitude_1777718342814.png');
-        $imgDellPrecision = asset('img/laptops/laptop_dell_precision_1777718358900.png');
-        $imgSonyVaio = asset('img/laptops/laptop_sony_vaio_1777718372184.png');
-        $imgToshiba = asset('img/laptops/laptop_toshiba_satellite_1777718388986.png');
-        $imgAsusROG = asset('img/laptops/laptop_asus_rog_1777718420102.png');
-        $imgSurface = asset('img/laptops/laptop_microsoft_surface_1777718434304.png');
-        $imgILife = asset('img/laptops/laptop_ilife_1777718447939.png');
+        $categories = \App\Models\Category::all();
+        
+        $query = \App\Models\Laptop::with('category');
+        if ($request->has('category')) {
+            $query->whereHas('category', function($q) use ($request) {
+                $q->where('slug', $request->category);
+            });
+        }
+        $laptops = $query->get();
 
-        $laptops = [
-            ['brand' => 'Lenovo', 'model' => 'i5 13 Gen', 'ram' => '8GB', 'storage' => '512GB SSD', 'details' => '', 'image' => $imgLenovoIdeaPad],
-            ['brand' => 'Lenovo', 'model' => 'i7 13 Gen', 'ram' => '16GB', 'storage' => '512GB SSD', 'details' => '', 'image' => $imgLenovoIdeaPad],
-            ['brand' => 'Lenovo', 'model' => 'i7 8 Gen', 'ram' => '8GB', 'storage' => '512GB', 'details' => '', 'image' => $imgLenovoIdeaPad],
-            ['brand' => 'HP Victus', 'model' => 'i5 13 Gen', 'ram' => '8GB', 'storage' => '512GB SSD', 'details' => 'RTX 3050 6GB VGA', 'image' => $imgHPVictus],
-            ['brand' => 'Dell', 'model' => 'i5 7 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDellLatitude],
-            ['brand' => 'Dell', 'model' => 'i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDellLatitude],
-            ['brand' => 'Sony', 'model' => 'i5', 'ram' => '4GB', 'storage' => 'HDD', 'details' => '', 'image' => $imgSonyVaio],
-            ['brand' => 'Sony', 'model' => 'i5', 'ram' => '6GB', 'storage' => '2TB HDD', 'details' => '', 'image' => $imgSonyVaio],
-            ['brand' => 'Toshiba', 'model' => 'Pentium', 'ram' => '3GB', 'storage' => '512GB HDD', 'details' => '', 'image' => $imgToshiba],
-            ['brand' => 'HP', 'model' => 'i5', 'ram' => '4GB', 'storage' => '512GB HDD', 'details' => '', 'image' => $imgHPEliteBook],
-            ['brand' => 'Toshiba', 'model' => 'Pentium', 'ram' => '4GB', 'storage' => '500GB HDD', 'details' => '', 'image' => $imgToshiba],
-            ['brand' => 'ILife', 'model' => 'Intel Inside', 'ram' => '4GB', 'storage' => '128GB HDD', 'details' => '', 'image' => $imgILife],
-            ['brand' => 'Lenovo', 'model' => 'i7', 'ram' => '8GB', 'storage' => '256GB SSD', 'details' => '', 'image' => $imgLenovoThinkPad],
-            ['brand' => 'Toshiba', 'model' => 'Celeron', 'ram' => '4GB', 'storage' => '256GB SSD', 'details' => '', 'image' => $imgToshiba],
-            ['brand' => 'Dell', 'model' => 'Core 2 Duo', 'ram' => '4GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDellLatitude],
-            ['brand' => 'Lenovo', 'model' => 'Celeron', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgLenovoIdeaPad],
-            ['brand' => 'HP', 'model' => 'Mini Laptop i5 8 Gen', 'ram' => '8GB', 'storage' => '128GB', 'details' => '', 'image' => $imgHPEliteBook],
-            ['brand' => 'HP', 'model' => 'i5 8 Gen', 'ram' => '16GB', 'storage' => '512GB', 'details' => '', 'image' => $imgHPEliteBook],
-            ['brand' => 'Dell Latitude', 'model' => '3420 i5 11 Gen', 'ram' => '16GB', 'storage' => '512GB', 'details' => '', 'image' => $imgDellLatitude],
-            ['brand' => 'Lenovo ThinkPad', 'model' => 'T490 i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgLenovoThinkPad],
-            ['brand' => 'Dell Latitude', 'model' => '5480 i7 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDellLatitude],
-            ['brand' => 'Dell Latitude', 'model' => '5540 i5 4 Gen', 'ram' => '4GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDellLatitude],
-            ['brand' => 'Toshiba', 'model' => 'i7 5 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '2GB VGA', 'image' => $imgToshiba],
-            ['brand' => 'Lenovo ThinkPad', 'model' => 'T450s i5 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgLenovoThinkPad],
-            ['brand' => 'Dell Precision', 'model' => '3510 i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '2GB VGA', 'image' => $imgDellPrecision],
-            ['brand' => 'Dell Precision', 'model' => '3530 i7 8 Gen', 'ram' => '16GB', 'storage' => '256GB', 'details' => '4GB VGA', 'image' => $imgDellPrecision],
-            ['brand' => 'Dell Latitude', 'model' => 'i5 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDellLatitude],
-            ['brand' => 'Lenovo ThinkPad', 'model' => 'T490s i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgLenovoThinkPad],
-            ['brand' => 'HP EliteBook', 'model' => 'i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgHPEliteBook],
-            ['brand' => 'Dell Latitude', 'model' => '5410 i5 10 Gen', 'ram' => '16GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDellLatitude],
-            ['brand' => 'ASUS', 'model' => 'i7 7 Gen', 'ram' => '16GB', 'storage' => '128GB SSD + 1TB HDD', 'details' => 'GTX 1050 4GB VGA', 'image' => $imgAsusROG],
-            ['brand' => 'Microsoft Surface', 'model' => 'i7 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgSurface],
-            ['brand' => 'Toshiba', 'model' => 'i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgToshiba],
-        ];
-
-        return view('pages.laptops', compact('laptops'));
+        return view('pages.laptops', compact('laptops', 'categories'));
     }
 }
