@@ -22,21 +22,21 @@
 </section>
 
 {{-- CATEGORY STRIP SECTION --}}
-<section class="bg-white py-16 shadow-inner relative z-10">
+<section style="background-color: #ffffff; padding: 60px 0; border-bottom: 1px solid #e2e8f0; position: relative; z-index: 10;">
     <div class="container">
         {{-- CIRCULAR BRAND CATEGORIES (LAPTOPSKING STYLE) --}}
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Shop By <span class="text-primary">Brand</span></h2>
-            <p class="text-slate-500 text-sm md:text-base font-medium">The best offers on your favorite brands, right here.</p>
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; color: #0f172a; margin-bottom: 10px;">Shop By <span style="color: #06b6d4;">Brand</span></h2>
+            <p style="color: #64748b; font-size: 1rem; font-weight: 500;">The best offers on your favorite brands, right here.</p>
         </div>
 
-        <div class="flex flex-wrap justify-center gap-6 md:gap-12 lg:gap-16">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
             {{-- All Brands Circle --}}
-            <a href="{{ route('laptops') }}" class="group flex flex-col items-center gap-4 transition-all">
-                <div class="w-24 h-24 md:w-36 md:h-36 rounded-full flex items-center justify-center transition-all duration-500 shadow-xl {{ !request()->has('category') ? 'bg-primary ring-4 ring-primary ring-offset-4 ring-offset-white scale-110' : 'bg-slate-100 border border-slate-200 hover:border-primary/50 hover:scale-105' }}">
-                    <i class="fa-solid fa-border-all text-2xl md:text-4xl {{ !request()->has('category') ? 'text-white' : 'text-primary' }}"></i>
+            <a href="{{ route('laptops') }}" style="display: flex; flex-direction: column; align-items: center; gap: 15px; text-decoration: none;">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-color: {{ !request()->has('category') ? '#06b6d4' : '#f1f5f9' }}; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; {{ !request()->has('category') ? 'box-shadow: 0 0 20px rgba(6,182,212,0.4);' : '' }}">
+                    <i class="fa-solid fa-border-all" style="font-size: 2rem; color: {{ !request()->has('category') ? '#ffffff' : '#06b6d4' }};"></i>
                 </div>
-                <span class="text-[10px] md:text-xs font-black uppercase tracking-widest text-center {{ !request()->has('category') ? 'text-primary' : 'text-slate-400 group-hover:text-primary' }}">All Brands</span>
+                <span style="font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: {{ !request()->has('category') ? '#06b6d4' : '#94a3b8' }}; text-align: center;">All Brands</span>
             </a>
 
             @foreach($categories as $cat)
@@ -45,11 +45,11 @@
                     $thumbImage = $repLaptop ? asset($repLaptop->image) : asset('img/laptops/default.png');
                     $isActive = request('category') == $cat->slug;
                 @endphp
-                <a href="{{ route('laptops', ['category' => $cat->slug]) }}" class="group flex flex-col items-center gap-4 transition-all">
-                    <div class="w-24 h-24 md:w-36 md:h-36 rounded-full overflow-hidden bg-[#FEF0E0] flex items-center justify-center p-4 transition-all duration-500 shadow-xl {{ $isActive ? 'ring-4 ring-primary ring-offset-4 ring-offset-white scale-110' : 'hover:scale-105' }}">
-                        <img src="{{ $thumbImage }}" alt="{{ $cat->name }}" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
+                <a href="{{ route('laptops', ['category' => $cat->slug]) }}" style="display: flex; flex-direction: column; align-items: center; gap: 15px; text-decoration: none;">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-color: #FEF0E0; display: flex; align-items: center; justify-content: center; padding: 15px; overflow: hidden; border: {{ $isActive ? '4px solid #06b6d4' : '1px solid #fef0e0' }}; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); {{ $isActive ? 'transform: scale(1.1);' : '' }}">
+                        <img src="{{ $thumbImage }}" alt="{{ $cat->name }}" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
-                    <span class="text-[10px] md:text-xs font-black uppercase tracking-widest text-center {{ $isActive ? 'text-primary' : 'text-slate-400 group-hover:text-primary' }}">{{ $cat->name }}</span>
+                    <span style="font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: {{ $isActive ? '#06b6d4' : '#94a3b8' }}; text-align: center;">{{ $cat->name }}</span>
                 </a>
             @endforeach
         </div>
@@ -57,70 +57,66 @@
 </section>
 
 {{-- LAPTOPS INVENTORY --}}
-<section class="section bg-darker min-h-screen relative overflow-hidden pt-10">
+<section style="background-color: #020617; min-height: 100vh; padding: 60px 0; position: relative; overflow: hidden;">
     {{-- Ambient Background Glows --}}
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
+    <div style="position: absolute; top: 0; left: 25%; width: 400px; height: 400px; background-color: rgba(6,182,212,0.1); filter: blur(120px); border-radius: 50%;"></div>
+    <div style="position: absolute; bottom: 0; right: 25%; width: 400px; height: 400px; background-color: rgba(6,182,212,0.05); filter: blur(120px); border-radius: 50%;"></div>
 
-    <div class="container relative">
+    <div class="container" style="position: relative; z-index: 1;">
         {{-- LAPTOPS GRID --}}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
             @foreach($laptops as $laptop)
-                <div class="group relative bg-slate-900/40 border border-slate-800 rounded-[2rem] overflow-hidden hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] mx-auto w-full max-w-[350px]">
-                    {{-- Glass Effect Overlay --}}
-                    <div class="absolute inset-0 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    
+                <div style="background-color: rgba(15,23,42,0.6); border: 1px solid #1e293b; border-radius: 2rem; overflow: hidden; transition: all 0.3s ease; max-width: 350px; margin: 0 auto; width: 100%;">
                     {{-- Badge --}}
-                    <div class="absolute top-6 left-6 z-10">
-                        <span class="px-4 py-1.5 rounded-full bg-slate-950/80 border border-slate-800 text-[10px] font-bold text-primary uppercase tracking-widest backdrop-blur-md">
+                    <div style="position: absolute; top: 20px; left: 20px; z-index: 10;">
+                        <span style="padding: 6px 16px; border-radius: 9999px; background-color: rgba(2,6,23,0.8); border: 1px solid #1e293b; font-size: 10px; font-weight: 700; color: #06b6d4; text-transform: uppercase; letter-spacing: 0.1em;">
                             {{ $laptop->brand }}
                         </span>
                     </div>
 
                     {{-- Image Container --}}
-                    <div class="relative aspect-[4/3] bg-white overflow-hidden p-8 flex items-center justify-center">
+                    <div style="position: relative; background-color: #ffffff; height: 220px; display: flex; align-items: center; justify-content: center; padding: 30px;">
                         <img src="{{ asset($laptop->image) }}" alt="{{ $laptop->brand }} {{ $laptop->model }}" 
-                             class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
+                             style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
 
                     {{-- Content --}}
-                    <div class="p-8 relative">
-                        <h3 class="text-lg font-bold text-white mb-6 line-clamp-1 group-hover:text-primary transition-colors">
+                    <div style="padding: 30px;">
+                        <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 25px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                             {{ $laptop->model }}
                         </h3>
 
-                        <div class="grid grid-cols-2 gap-4 mb-8">
-                            <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                                    <i class="fa-solid fa-microchip text-xs"></i>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width: 32px; height: 32px; border-radius: 8px; background-color: #1e293b; display: flex; align-items: center; justify-content: center; color: #06b6d4;">
+                                    <i class="fa-solid fa-microchip" style="font-size: 12px;"></i>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-gray-500 uppercase font-bold">RAM</p>
-                                    <p class="text-xs font-bold text-gray-200">{{ $laptop->ram }}</p>
+                                    <p style="font-size: 9px; color: #64748b; text-transform: uppercase; font-weight: 700; margin: 0;">RAM</p>
+                                    <p style="font-size: 12px; font-weight: 700; color: #e2e8f0; margin: 0;">{{ $laptop->ram }}</p>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                                    <i class="fa-solid fa-hard-drive text-xs"></i>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width: 32px; height: 32px; border-radius: 8px; background-color: #1e293b; display: flex; align-items: center; justify-content: center; color: #06b6d4;">
+                                    <i class="fa-solid fa-hard-drive" style="font-size: 12px;"></i>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-gray-500 uppercase font-bold">Storage</p>
-                                    <p class="text-xs font-bold text-gray-200">{{ $laptop->ssd }}</p>
+                                    <p style="font-size: 9px; color: #64748b; text-transform: uppercase; font-weight: 700; margin: 0;">Storage</p>
+                                    <p style="font-size: 12px; font-weight: 700; color: #e2e8f0; margin: 0;">{{ $laptop->ssd }}</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-between pt-6 border-t border-slate-800">
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 25px; border-top: 1px solid #1e293b;">
                             <div>
-                                <p class="text-[10px] text-gray-500 uppercase font-bold mb-1">Our Price</p>
-                                <p class="text-2xl font-black text-white">
-                                    <span class="text-primary text-sm">$</span>{{ number_format($laptop->price) }}
+                                <p style="font-size: 9px; color: #64748b; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Our Price</p>
+                                <p style="font-size: 1.5rem; font-weight: 900; color: #ffffff; margin: 0;">
+                                    <span style="color: #06b6d4; font-size: 14px;">$</span>{{ number_format($laptop->price) }}
                                 </p>
                             </div>
                             <a href="https://wa.me/96176507040?text=I'm%20interested%20in%20the%20{{ urlencode($laptop->brand . ' ' . $laptop->model) }}" 
-                               class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-lg">
-                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                               style="width: 48px; height: 48px; border-radius: 12px; background-color: #1e293b; display: flex; align-items: center; justify-content: center; color: #06b6d4; text-decoration: none; transition: all 0.3s ease;">
+                                <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i>
                             </a>
                         </div>
                     </div>
@@ -129,11 +125,11 @@
         </div>
 
         @if($laptops->isEmpty())
-            <div class="text-center py-20">
-                <i class="fa-solid fa-laptop-slash text-6xl text-slate-800 mb-6"></i>
-                <h3 class="text-2xl font-bold text-white mb-2">No Laptops Found</h3>
-                <p class="text-gray-500">Try selecting a different brand or clearing the filters.</p>
-                <a href="{{ route('laptops') }}" class="inline-block mt-6 text-primary hover:underline font-bold">
+            <div style="text-align: center; padding: 80px 0;">
+                <i class="fa-solid fa-laptop-slash" style="font-size: 60px; color: #1e293b; margin-bottom: 25px; display: block;"></i>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #ffffff; margin-bottom: 10px;">No Laptops Found</h3>
+                <p style="color: #64748b;">Try selecting a different brand or clearing the filters.</p>
+                <a href="{{ route('laptops') }}" style="display: inline-block; margin-top: 25px; color: #06b6d4; font-weight: 700; text-decoration: none;">
                     View All Brands
                 </a>
             </div>
