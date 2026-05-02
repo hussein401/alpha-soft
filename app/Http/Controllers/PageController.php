@@ -208,40 +208,48 @@ class PageController extends Controller
      */
     public function laptops()
     {
+        // Define some high-quality Unsplash stock photos by category
+        $imgLenovo = 'https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?q=80&w=600&auto=format&fit=crop';
+        $imgHP = 'https://images.unsplash.com/photo-1583339824000-50d0328b9487?q=80&w=600&auto=format&fit=crop';
+        $imgDell = 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=600&auto=format&fit=crop';
+        $imgGaming = 'https://images.unsplash.com/photo-1600861194942-f884de80f6da?q=80&w=600&auto=format&fit=crop';
+        $imgGeneric = 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=600&auto=format&fit=crop';
+        $imgSurface = 'https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=600&auto=format&fit=crop';
+
         $laptops = [
-            ['brand' => 'Lenovo', 'model' => 'i5 13 Gen', 'ram' => '8GB', 'storage' => '512GB SSD', 'details' => ''],
-            ['brand' => 'Lenovo', 'model' => 'i7 13 Gen', 'ram' => '16GB', 'storage' => '512GB SSD', 'details' => ''],
-            ['brand' => 'Lenovo', 'model' => 'i7 8 Gen', 'ram' => '8GB', 'storage' => '512GB', 'details' => ''],
-            ['brand' => 'HP Victus', 'model' => 'i5 13 Gen', 'ram' => '8GB', 'storage' => '512GB SSD', 'details' => 'RTX 3050 6GB VGA'],
-            ['brand' => 'Dell', 'model' => 'i5 7 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Dell', 'model' => 'i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Sony', 'model' => 'i5', 'ram' => '4GB', 'storage' => 'HDD', 'details' => ''],
-            ['brand' => 'Sony', 'model' => 'i5', 'ram' => '6GB', 'storage' => '2TB HDD', 'details' => ''],
-            ['brand' => 'Toshiba', 'model' => 'Pentium', 'ram' => '3GB', 'storage' => '512GB HDD', 'details' => ''],
-            ['brand' => 'HP', 'model' => 'i5', 'ram' => '4GB', 'storage' => '512GB HDD', 'details' => ''],
-            ['brand' => 'Toshiba', 'model' => 'Pentium', 'ram' => '4GB', 'storage' => '500GB HDD', 'details' => ''],
-            ['brand' => 'ILife', 'model' => 'Intel Inside', 'ram' => '4GB', 'storage' => '128GB HDD', 'details' => ''],
-            ['brand' => 'Lenovo', 'model' => 'i7', 'ram' => '8GB', 'storage' => '256GB SSD', 'details' => ''],
-            ['brand' => 'Toshiba', 'model' => 'Celeron', 'ram' => '4GB', 'storage' => '256GB SSD', 'details' => ''],
-            ['brand' => 'Dell', 'model' => 'Core 2 Duo', 'ram' => '4GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Lenovo', 'model' => 'Celeron', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'HP', 'model' => 'Mini Laptop i5 8 Gen', 'ram' => '8GB', 'storage' => '128GB', 'details' => ''],
-            ['brand' => 'HP', 'model' => 'i5 8 Gen', 'ram' => '16GB', 'storage' => '512GB', 'details' => ''],
-            ['brand' => 'Dell Latitude', 'model' => '3420 i5 11 Gen', 'ram' => '16GB', 'storage' => '512GB', 'details' => ''],
-            ['brand' => 'Lenovo ThinkPad', 'model' => 'T490 i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Dell Latitude', 'model' => '5480 i7 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Dell Latitude', 'model' => '5540 i5 4 Gen', 'ram' => '4GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Toshiba', 'model' => 'i7 5 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '2GB VGA'],
-            ['brand' => 'Lenovo ThinkPad', 'model' => 'T450s i5 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Dell Precision', 'model' => '3510 i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '2GB VGA'],
-            ['brand' => 'Dell Precision', 'model' => '3530 i7 8 Gen', 'ram' => '16GB', 'storage' => '256GB', 'details' => '4GB VGA'],
-            ['brand' => 'Dell Latitude', 'model' => 'i5 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Lenovo ThinkPad', 'model' => 'T490s i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'HP EliteBook', 'model' => 'i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Dell Latitude', 'model' => '5410 i5 10 Gen', 'ram' => '16GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'ASUS', 'model' => 'i7 7 Gen', 'ram' => '16GB', 'storage' => '128GB SSD + 1TB HDD', 'details' => 'GTX 1050 4GB VGA'],
-            ['brand' => 'Microsoft Surface', 'model' => 'i7 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
-            ['brand' => 'Toshiba', 'model' => 'i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => ''],
+            ['brand' => 'Lenovo', 'model' => 'i5 13 Gen', 'ram' => '8GB', 'storage' => '512GB SSD', 'details' => '', 'image' => $imgLenovo],
+            ['brand' => 'Lenovo', 'model' => 'i7 13 Gen', 'ram' => '16GB', 'storage' => '512GB SSD', 'details' => '', 'image' => $imgLenovo],
+            ['brand' => 'Lenovo', 'model' => 'i7 8 Gen', 'ram' => '8GB', 'storage' => '512GB', 'details' => '', 'image' => $imgLenovo],
+            ['brand' => 'HP Victus', 'model' => 'i5 13 Gen', 'ram' => '8GB', 'storage' => '512GB SSD', 'details' => 'RTX 3050 6GB VGA', 'image' => $imgGaming],
+            ['brand' => 'Dell', 'model' => 'i5 7 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDell],
+            ['brand' => 'Dell', 'model' => 'i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDell],
+            ['brand' => 'Sony', 'model' => 'i5', 'ram' => '4GB', 'storage' => 'HDD', 'details' => '', 'image' => $imgGeneric],
+            ['brand' => 'Sony', 'model' => 'i5', 'ram' => '6GB', 'storage' => '2TB HDD', 'details' => '', 'image' => $imgGeneric],
+            ['brand' => 'Toshiba', 'model' => 'Pentium', 'ram' => '3GB', 'storage' => '512GB HDD', 'details' => '', 'image' => $imgGeneric],
+            ['brand' => 'HP', 'model' => 'i5', 'ram' => '4GB', 'storage' => '512GB HDD', 'details' => '', 'image' => $imgHP],
+            ['brand' => 'Toshiba', 'model' => 'Pentium', 'ram' => '4GB', 'storage' => '500GB HDD', 'details' => '', 'image' => $imgGeneric],
+            ['brand' => 'ILife', 'model' => 'Intel Inside', 'ram' => '4GB', 'storage' => '128GB HDD', 'details' => '', 'image' => $imgGeneric],
+            ['brand' => 'Lenovo', 'model' => 'i7', 'ram' => '8GB', 'storage' => '256GB SSD', 'details' => '', 'image' => $imgLenovo],
+            ['brand' => 'Toshiba', 'model' => 'Celeron', 'ram' => '4GB', 'storage' => '256GB SSD', 'details' => '', 'image' => $imgGeneric],
+            ['brand' => 'Dell', 'model' => 'Core 2 Duo', 'ram' => '4GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDell],
+            ['brand' => 'Lenovo', 'model' => 'Celeron', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgLenovo],
+            ['brand' => 'HP', 'model' => 'Mini Laptop i5 8 Gen', 'ram' => '8GB', 'storage' => '128GB', 'details' => '', 'image' => $imgHP],
+            ['brand' => 'HP', 'model' => 'i5 8 Gen', 'ram' => '16GB', 'storage' => '512GB', 'details' => '', 'image' => $imgHP],
+            ['brand' => 'Dell Latitude', 'model' => '3420 i5 11 Gen', 'ram' => '16GB', 'storage' => '512GB', 'details' => '', 'image' => $imgDell],
+            ['brand' => 'Lenovo ThinkPad', 'model' => 'T490 i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgLenovo],
+            ['brand' => 'Dell Latitude', 'model' => '5480 i7 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDell],
+            ['brand' => 'Dell Latitude', 'model' => '5540 i5 4 Gen', 'ram' => '4GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDell],
+            ['brand' => 'Toshiba', 'model' => 'i7 5 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '2GB VGA', 'image' => $imgGeneric],
+            ['brand' => 'Lenovo ThinkPad', 'model' => 'T450s i5 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgLenovo],
+            ['brand' => 'Dell Precision', 'model' => '3510 i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '2GB VGA', 'image' => $imgDell],
+            ['brand' => 'Dell Precision', 'model' => '3530 i7 8 Gen', 'ram' => '16GB', 'storage' => '256GB', 'details' => '4GB VGA', 'image' => $imgDell],
+            ['brand' => 'Dell Latitude', 'model' => 'i5 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDell],
+            ['brand' => 'Lenovo ThinkPad', 'model' => 'T490s i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgLenovo],
+            ['brand' => 'HP EliteBook', 'model' => 'i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgHP],
+            ['brand' => 'Dell Latitude', 'model' => '5410 i5 10 Gen', 'ram' => '16GB', 'storage' => '256GB', 'details' => '', 'image' => $imgDell],
+            ['brand' => 'ASUS', 'model' => 'i7 7 Gen', 'ram' => '16GB', 'storage' => '128GB SSD + 1TB HDD', 'details' => 'GTX 1050 4GB VGA', 'image' => $imgGaming],
+            ['brand' => 'Microsoft Surface', 'model' => 'i7 6 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgSurface],
+            ['brand' => 'Toshiba', 'model' => 'i5 8 Gen', 'ram' => '8GB', 'storage' => '256GB', 'details' => '', 'image' => $imgGeneric],
         ];
 
         return view('pages.laptops', compact('laptops'));

@@ -26,29 +26,35 @@
     <div class="container">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @foreach($laptops as $laptop)
-                <div class="service-card group shadow-elegant" style="padding: 2rem; position: relative; overflow: hidden; border: 1px solid var(--glass-border); transition: var(--transition);">
+                <div class="service-card group shadow-elegant" style="padding: 0; position: relative; overflow: hidden; border: 1px solid var(--glass-border); transition: var(--transition);">
                     {{-- Floating WhatsApp button for each laptop --}}
                     <a href="https://wa.me/9613243504?text=Hello%2C%20I%20am%20interested%20in%20the%20{{ urlencode($laptop['brand'] . ' ' . $laptop['model']) }}%20laptop." target="_blank" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: #25D366; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition); text-decoration: none;" class="hover:scale-110">
                         <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i>
                     </a>
 
-                    <div style="font-size: 0.8rem; font-weight: 800; color: var(--primary-cyan); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px;">
-                        {{ $laptop['brand'] }}
+                    {{-- Laptop Image --}}
+                    <div style="height: 200px; overflow: hidden; width: 100%;">
+                        <img src="{{ $laptop['image'] }}" alt="{{ $laptop['brand'] }} {{ $laptop['model'] }}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" class="group-hover:scale-105">
                     </div>
-                    
-                    <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-white); margin-bottom: 1rem; line-height: 1.3;">
-                        {{ $laptop['model'] }}
-                    </h3>
 
-                    <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
-                        <li><i class="fa-solid fa-microchip text-primary" style="width: 20px;"></i> <strong>RAM:</strong> {{ $laptop['ram'] }}</li>
-                        <li><i class="fa-solid fa-hard-drive text-primary" style="width: 20px;"></i> <strong>Storage:</strong> {{ $laptop['storage'] }}</li>
-                        @if($laptop['details'])
-                            <li><i class="fa-solid fa-gamepad text-primary" style="width: 20px;"></i> <strong>Extra:</strong> {{ $laptop['details'] }}</li>
-                        @endif
-                    </ul>
+                    <div style="padding: 1.5rem;">
+                        <div style="font-size: 0.8rem; font-weight: 800; color: var(--primary-cyan); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px;">
+                            {{ $laptop['brand'] }}
+                        </div>
+                        
+                        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-white); margin-bottom: 1rem; line-height: 1.3;">
+                            {{ $laptop['model'] }}
+                        </h3>
+
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
+                            <li><i class="fa-solid fa-microchip text-primary" style="width: 20px;"></i> <strong>RAM:</strong> {{ $laptop['ram'] }}</li>
+                            <li><i class="fa-solid fa-hard-drive text-primary" style="width: 20px;"></i> <strong>Storage:</strong> {{ $laptop['storage'] }}</li>
+                            @if($laptop['details'])
+                                <li><i class="fa-solid fa-gamepad text-primary" style="width: 20px;"></i> <strong>Extra:</strong> {{ $laptop['details'] }}</li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
-            @endforeach
         </div>
         
         <div class="mt-16 text-center">
