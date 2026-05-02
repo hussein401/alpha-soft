@@ -208,10 +208,6 @@ class PageController extends Controller
      */
     public function laptops()
     {
-        $brandImages = [
-            'lenovo' => 'https://images.unsplash.com/photo-1606813907291-d86ebb9954ad?auto=format&fit=crop&q=80&w=800',
-            'hp' => 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=800',
-            'hp_gaming' => 'https://images.unsplash.com/photo-1544099858-75feeb57f00b?auto=format&fit=crop&q=80&w=800',
         // Use highly realistic, brand-specific local images generated specifically for these models
         $imgLenovoIdeaPad = asset('img/laptops/laptop_lenovo_ideapad_1777718294494.png');
         $imgLenovoThinkPad = asset('img/laptops/laptop_lenovo_thinkpad_1777718313594.png');
