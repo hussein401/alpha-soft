@@ -55,6 +55,7 @@
                         </ul>
                     </div>
                 </div>
+            @endforeach
         </div>
         
         <div class="mt-16 text-center">
