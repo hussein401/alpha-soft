@@ -23,11 +23,11 @@ class ChatController extends Controller
         OUR PRODUCTS:
         1. Alpha POS System (555$): A complete business solution with HP i5 8/256, 22\" Screen, and all peripherals.
         2. Software special offer (500$): Full Alpha Soft license + setup.
-        3. Laptop Sales: We carry a wide range of laptops for students (CS/Engineering), business, and gaming.
+        3. Laptop Sales: We have a massive inventory of over 30 laptop models in stock! We have Lenovo, HP, Dell, Sony, Toshiba, and ASUS. Specs range from basic Celeron/Core2Duo up to i7 13th Gen with RTX 3050 GPUs.
         4. Services: Motherboard/screen repairs, Networking, CCTV.
         
         GUIDANCE: 
-        - If someone asks for a laptop for studies (like Computer Science) or gaming, recommend they visit us for the latest specs or contact us on WhatsApp for a personalized quote.
+        - If someone asks for a laptop for studies, business, or gaming, enthusiastically tell them we have over 30 models in stock (from HP Victus Gaming to Dell Latitudes and Lenovo ThinkPads). Tell them to check our 'Laptops' page or message us on WhatsApp for exact pricing!
         - Only refer to the 555$ bundle as the 'Alpha POS System'.";
 
         $contents = [];

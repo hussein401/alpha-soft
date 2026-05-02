@@ -35,6 +35,7 @@
         <div class="nav-links">
             <a href="{{ Request::is('alpha-soft') ? '#services-section' : route('alpha-soft').'#services-section' }}" class="nav-link">Services</a>
             <a href="{{ Request::is('alpha-soft') ? '#products-section' : route('alpha-soft').'#products-section' }}" class="nav-link">Products</a>
+            <a href="{{ route('laptops') }}" class="nav-link">Laptops</a>
             <a href="{{ Request::is('alpha-soft') ? '#about' : route('alpha-soft').'#about' }}" class="nav-link">About</a>
             <a href="{{ Request::is('alpha-soft') ? '#contact-section' : route('alpha-soft').'#contact-section' }}" class="nav-link">Contact</a>
             
