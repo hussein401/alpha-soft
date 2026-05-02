@@ -28,45 +28,36 @@
     <div class="container relative">
         
         <div class="mb-16">
-            <div class="text-center mb-10">
-                <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Select a Brand</span>
-                <h2 class="text-3xl md:text-4xl font-bold">Explore Our <span class="text-gradient">Catalog</span></h2>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-                
-                <a href="<?php echo e(route('laptops')); ?>" 
-                   class="relative group overflow-hidden flex flex-col items-center justify-center w-28 h-28 md:w-36 md:h-36 rounded-3xl border-2 transition-all duration-500 <?php echo e(!request()->has('category') ? 'bg-primary border-primary shadow-[0_0_30px_rgba(6,182,212,0.3)] scale-105' : 'bg-slate-900/40 border-slate-800 hover:border-primary/50 hover:bg-slate-800/80'); ?>">
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <i class="fa-solid fa-border-all text-2xl md:text-3xl mb-3 <?php echo e(!request()->has('category') ? 'text-white' : 'text-primary'); ?>"></i>
-                    <span class="font-bold text-xs md:text-sm <?php echo e(!request()->has('category') ? 'text-white' : 'text-gray-400'); ?>">All</span>
-                </a>
-
-                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <a href="<?php echo e(route('laptops', ['category' => $cat->slug])); ?>" 
-                       class="relative group overflow-hidden flex flex-col items-center justify-center w-28 h-28 md:w-36 md:h-36 rounded-3xl border-2 transition-all duration-500 <?php echo e(request('category') == $cat->slug ? 'bg-primary border-primary shadow-[0_0_30px_rgba(6,182,212,0.3)] scale-105' : 'bg-slate-900/40 border-slate-800 hover:border-primary/50 hover:bg-slate-800/80'); ?>">
-                        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-[2.5rem] p-3 md:p-4 shadow-2xl">
+                    <div class="flex flex-wrap md:flex-nowrap items-center justify-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
                         
-                        
-                        <div class="absolute -bottom-2 -right-2 text-6xl font-black opacity-5 group-hover:opacity-10 transition-opacity uppercase pointer-events-none">
-                            <?php echo e(substr($cat->name, 0, 1)); ?>
+                        <a href="<?php echo e(route('laptops')); ?>" 
+                           class="flex-shrink-0 flex items-center gap-3 px-6 py-4 rounded-[1.8rem] transition-all duration-300 <?php echo e(!request()->has('category') ? 'bg-primary text-white shadow-lg' : 'text-gray-400 hover:bg-slate-800/50 hover:text-white'); ?>">
+                            <i class="fa-solid fa-border-all text-sm"></i>
+                            <span class="font-bold whitespace-nowrap">All Brands</span>
+                        </a>
 
-                        </div>
-
-                        <?php
-                            $icon = 'fa-laptop';
-                            if($cat->slug == 'hp') $icon = 'fa-h';
-                            if($cat->slug == 'dell') $icon = 'fa-d';
-                            if($cat->slug == 'lenovo') $icon = 'fa-l';
-                            if($cat->slug == 'asus') $icon = 'fa-a';
-                            if($cat->slug == 'sony') $icon = 'fa-s';
-                            if($cat->slug == 'toshiba') $icon = 'fa-t';
-                            if($cat->slug == 'surface') $icon = 'fa-window-maximize';
-                        ?>
-                        <i class="fa-solid <?php echo e($icon); ?> text-2xl md:text-3xl mb-3 <?php echo e(request('category') == $cat->slug ? 'text-white' : 'text-primary'); ?>"></i>
-                        <span class="font-bold text-xs md:text-sm text-center px-2 <?php echo e(request('category') == $cat->slug ? 'text-white' : 'text-gray-400'); ?>"><?php echo e($cat->name); ?></span>
-                    </a>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="hidden md:block w-px h-8 bg-slate-800 mx-1"></div>
+                            <a href="<?php echo e(route('laptops', ['category' => $cat->slug])); ?>" 
+                               class="flex-shrink-0 flex items-center gap-3 px-6 py-4 rounded-[1.8rem] transition-all duration-300 <?php echo e(request('category') == $cat->slug ? 'bg-primary text-white shadow-lg' : 'text-gray-400 hover:bg-slate-800/50 hover:text-white'); ?>">
+                                <?php
+                                    $icon = 'fa-laptop';
+                                    if($cat->slug == 'hp') $icon = 'fa-h';
+                                    if($cat->slug == 'dell') $icon = 'fa-d';
+                                    if($cat->slug == 'lenovo') $icon = 'fa-l';
+                                    if($cat->slug == 'asus') $icon = 'fa-a';
+                                    if($cat->slug == 'sony') $icon = 'fa-s';
+                                    if($cat->slug == 'toshiba') $icon = 'fa-t';
+                                    if($cat->slug == 'surface') $icon = 'fa-window-maximize';
+                                ?>
+                                <i class="fa-solid <?php echo e($icon); ?> text-sm"></i>
+                                <span class="font-bold whitespace-nowrap"><?php echo e($cat->name); ?></span>
+                            </a>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                </div>
             </div>
         </div>
 
