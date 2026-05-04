@@ -60,7 +60,11 @@ class LaptopSeeder extends Seeder
         ];
 
         foreach ($laptops as $laptop) {
-            Laptop::create($laptop);
+            Laptop::firstOrCreate([
+                'category_id' => $laptop['category_id'],
+                'laptop_model_id' => $laptop['laptop_model_id'],
+                'model' => $laptop['model']
+            ], $laptop);
         }
     }
 }
