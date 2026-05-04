@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Computronix SARL — IT Solutions & Repairs')
 @section('meta_description', 'Computronix SARL delivers professional computer sales, expert repairs, and tailored IT solutions in Lebanon. Powered by AI.')

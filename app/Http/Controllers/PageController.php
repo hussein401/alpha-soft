@@ -211,13 +211,40 @@ class PageController extends Controller
         $categories = \App\Models\Category::all();
         
         $query = \App\Models\Laptop::with('category');
-        if ($request->has('category')) {
+        if ($request->has('category') && $request->category != '') {
             $query->whereHas('category', function($q) use ($request) {
                 $q->where('slug', $request->category);
             });
         }
+
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('model', 'LIKE', "%{$search}%")
+                  ->orWhere('brand', 'LIKE', "%{$search}%")
+                  ->orWhere('details', 'LIKE', "%{$search}%");
+            });
+        }
+
         $laptops = $query->get();
 
         return view('pages.laptops', compact('laptops', 'categories'));
+    }
+
+    /**
+     * Single laptop details page
+     */
+    public function laptopShow($id)
+    {
+        $laptop = \App\Models\Laptop::with('category')->findOrFail($id);
+        
+        // Fetch related laptops from the same category
+        $relatedLaptops = \App\Models\Laptop::where('category_id', $laptop->category_id)
+            ->where('id', '!=', $laptop->id)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('pages.laptop_show', compact('laptop', 'relatedLaptops'));
     }
 }

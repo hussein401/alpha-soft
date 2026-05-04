@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>@yield('title', 'Home') | Computronix SARL</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +24,7 @@
 {{-- ========== NAVBAR ========== --}}
 <nav class="navbar">
     <div class="container nav-container">
-        <a href="{{ route('home') }}" class="nav-brand">
+        <a href="{{ route('admin.dashboard') }}" class="nav-brand">
             <div class="nav-logo" style="background: transparent; overflow: hidden;">
                 <img src="{{ asset('images/logo.png') }}" alt="Computronix Logo" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
@@ -40,6 +41,9 @@
             <a href="{{ Request::is('alpha-soft') ? '#contact-section' : route('alpha-soft').'#contact-section' }}" class="nav-link">Contact</a>
             
             <a href="{{ Request::is('alpha-soft') ? '#chat-section' : route('alpha-soft').'#chat-section' }}" class="nav-btn">Ask AI</a>
+            @if(session('admin_logged_in'))
+                <a href="{{ route('admin.logout') }}" class="nav-link" style="color: #f87171 !important; font-weight: 800;">Logout Admin</a>
+            @endif
         </div>
     </div>
 </nav>
@@ -47,8 +51,23 @@
 {{-- ========== MAIN CONTENT ========== --}}
 <main>
     @yield('content')
-    </main>
+</main>
 
+{{-- ========== FOOTER ========== --}}
+<footer style="background: #0f172a; border-top: 1px solid #1e293b; padding: 40px 0; color: #64748b; font-size: 14px;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+        <div>
+            &copy; {{ date('Y') }} Computronix SARL. All rights reserved.
+        </div>
+        <div style="display: flex; gap: 20px;">
+            <a href="{{ route('home') }}" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#06b6d4';" onmouseout="this.style.color='inherit';">Home</a>
+            <a href="{{ route('laptops') }}" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#06b6d4';" onmouseout="this.style.color='inherit';">Laptops</a>
+            <a href="{{ route('admin.dashboard') }}" style="color: #475569; text-decoration: none; font-weight: 700; transition: color 0.3s;" onmouseover="this.style.color='#06b6d4';" onmouseout="this.style.color='#475569';">
+                <i class="fa-solid fa-lock" style="font-size: 10px; margin-right: 4px;"></i> Staff Login
+            </a>
+        </div>
+    </div>
+</footer>
 
 {{-- Scripts --}}
 <script>

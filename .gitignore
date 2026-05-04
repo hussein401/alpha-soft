@@ -20,7 +20,6 @@ yarn-error.log
 *.sqlite3
 *.db
 *.db3
-*.s3db
 *.sl3
 .DS_Store
 Thumbs.db
@@ -28,3 +27,8 @@ cloudflared.exe
 /public/hello.txt
 /public/force_check.php
 /bootstrap/cache/*.php
+/storage/framework/cache/data/*
+/storage/framework/views/*.php
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/logs/*
